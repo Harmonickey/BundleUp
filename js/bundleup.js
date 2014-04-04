@@ -11,7 +11,8 @@ $(function(){
 			$("#temp").append(temp_f);
 		},
 		error: function() {
-			$("#temp").append("Could not find temperature.");
+			$("#error").append("Problem with finding current condition.");
+			$("#error").prop("hidden", false);
 		}
 
 	});
@@ -23,12 +24,15 @@ $(function(){
 		+state+"/"+city+".json",
 		dataType:"jsonp",
 		success: function(parsed_json) {
-		// var location = parsed_json['location']['city'];
-		var p1 = parsed_json['forecast']['txt_forecast']['forecastday'][((time < 17) ? 0 : 1)]['pop'];
-		var p2 = parsed_json['forecast']['txt_forecast']['forecastday'][((time < 17) ? 0 : 1)]['icon_url'];
-		console.log(p2);
-		$("#precip").append(p1);
-		$("#weather").attr("src", p2);
+			var p1 = parsed_json['forecast']['txt_forecast']['forecastday'][((time < 17) ? 0 : 1)]['pop'];
+			var p2 = parsed_json['forecast']['txt_forecast']['forecastday'][((time < 17) ? 0 : 1)]['icon_url'];
+		
+			$("#precip").append(p1);
+			$("#weather").attr("src", p2);
+		},
+		error: function() {
+			$("#error").append("Problem with finding forecast.");
+			$("#error").prop("hidden", false);
 		}
 	});
 });

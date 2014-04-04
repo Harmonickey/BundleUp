@@ -29,3 +29,8 @@
 .suggestion {
 	clear: both;
 }
+
+#error {
+	color: red;
+	font-style: italic;	
+}
