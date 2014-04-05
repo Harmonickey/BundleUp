@@ -72,7 +72,6 @@ function findcondition(windchilltemp) {
 
 function listsuggestions() {
 	var condition = findcondition(wind_chill);
-	console.log(condition);
 	document.getElementById(condition).style.display='block';
 	if (rain==true) {
 		document.getElementById('rain').style.display='block';

@@ -7,6 +7,7 @@
 
 #weather-text {
 	text-align: right;
+	color: white;
 }
 
 #weather {
@@ -22,13 +23,28 @@
 	float: left;
 }
 
+.suggestion {
+	clear: both;
+	vertical-align: middle;
+}
+
 .suggestion p {
 	text-align: left;
+	margin-top: 50px;
+	margin-left: 50%;
 	font-size: 30px;
 }
 
-.suggestion {
-	clear: both;
+.suggestion img {
+	width: 35%;
+	float: left;
+	margin-bottom: 50px;
+}
+
+.suggestion li {
+	float: left;
+	list-style: none;
+	width: 100%;
 }
 
 #error {

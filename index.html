@@ -34,44 +34,64 @@
         <div id="imagewrap" class="pull-left">
           <img id="weather" src="imgs/cloudy.jpg"/>
         </div>
-        <h3 id="weather-text"> Temperature Range: <span id="temp"></span>F <br/>
-        Chance of Precipitation: <span id="precip"></span>% <br/>
-        Wind: 25mph, SW </h3>
+        <h3 id="weather-text"> Temperature Range: <span id="temp"></span>F <br><br/>
+        Chance of Precipitation: <span id="precip"></span>% <br><br/>
+        Wind: <span id="wind_mph"></span>mph, <span id="wind_dir"></span> <br><br/>
+        </h3>
       </div>
 
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="suggestion" id="cold" style="display: none">
-            <img class="sugg-img pull-left"src="imgs/shortsleeve.jpg"/>
-            <img class="sugg-img pull-left"src="imgs/shortsleeve.jpg"/>
-            <img class="sugg-img pull-left"src="imgs/shortsleeve.jpg"/>  
-            <p> Short-Sleeve Shirt </p>
-          </div>
-          <div class="suggestion" id="mild" style="display: none">
-            <img class="sugg-img pull-left"src="imgs/shortsleeve.jpg"/>
-            <img class="sugg-img pull-left"src="imgs/shortsleeve.jpg"/>
-            <img class="sugg-img pull-left"src="imgs/shortsleeve.jpg"/>             
-	    <p> Short-Sleeve Shirt </p>
-          </div>
-          <div class="suggestion" id="warm" style="display: none">
-            <img class="sugg-img pull-left"src="imgs/shortsleeve.jpg"/>
-            <img class="sugg-img pull-left"src="imgs/shortsleeve.jpg"/>
-            <img class="sugg-img pull-left"src="imgs/shortsleeve.jpg"/>
-            <p> Short-Sleeve Shirt </p>
-          </div>
-	  <div class="suggestion" id="sunny" style="display: none">
-            <img class="sugg-img pull-left"src="imgs/shortsleeve.jpg"/>
-            <img class="sugg-img pull-left"src="imgs/shortsleeve.jpg"/>
-            <img class="sugg-img pull-left"src="imgs/shortsleeve.jpg"/>
-            <p> Short-Sleeve Shirt </p>
-          </div>
-	  <div class="suggestion" id="rain" style="display: none">
-            <img class="sugg-img pull-left"src="imgs/shortsleeve.jpg"/>
-            <img class="sugg-img pull-left"src="imgs/shortsleeve.jpg"/>
-            <img class="sugg-img pull-left"src="imgs/shortsleeve.jpg"/>
-            <p> Short-Sleeve Shirt </p>
-          </div>
+      <div >
+        <!--Cold Options-->
+        <div class="suggestion" id="cold" style="display: none">
+          <ul>
+            <li><img src="images/top/heavy_coat.jpg"/>
+            <p> Heavy Coat </p></li>
+            <li><img src="images/bottom/pants.jpg"/>
+            <p> Heavy Pants </p></li>
+            <li><img src="images/accessories/boot.jpg"/> 
+            <p> Warm Boots </p></li>
+            <li><img src="images/accessories/hat.jpg"/> 
+            <p> Winter Hat </p></li>
+            <li><img src="images/accessories/scarf.jpg"/> 
+            <p> Scarf </p></li>
+          </ul>
         </div>
-    </div> 
+        <!--Mild options-->
+        <div class="suggestion" id="mild" style="display: none">
+          <ul>
+            <li><img class="sugg-img pull-left"src="images/top/hoodie.jpg"/>
+            <p> Long Sleeves </p></li>
+            <li><img class="sugg-img pull-left"src="images/bottom/light-pant.jpg"/>
+            <p> Light Pants </p></li>
+            <li><img class="sugg-img pull-left"src="images/accessories/sneakers.jpg"/>
+            <p> Light Shoes </p></li>
+          </ul>
+        </div>
+        <!--Warm options-->
+        <div class="suggestion" id="warm" style="display: none">
+          <ul>
+            <li><img class="sugg-img pull-left"src="imgs/shortsleeve.jpg"/>
+            <p> Short Sleeves </p><br></li>
+            <li><img class="sugg-img pull-left"src="images/bottom/short.jpg"/>
+            <p> Shorts/Skirt </p></li>
+            <li><img class="sugg-img pull-left"src="images/accessories/sandal.jpg"/>
+            <p> Sandals </p></li>
+          </ul>
+        </div>
+        <div class="suggestion" id="sunny" style="display: none">
+          <ul>
+            <li><img class="sugg-img pull-left"src="images/accessories/sunglasses.jpg"/>
+            <p> Sunglasses </p></li>
+          </ul>
+        </div>
+        <div class="suggestion" id="rain" style="display: none">
+          <ul>
+            <li><img class="sugg-img pull-left"src="images/accessories/umbrella.jpg"/>
+            <p> Umbrella </p></li>
+            <li><img class="sugg-img pull-left"src="images/accessories/rainboots.jpg"/>
+            <p> Rain Boots </p></li>
+          </ul>
+        </div>
+      </div>
   </body>
 </html>
