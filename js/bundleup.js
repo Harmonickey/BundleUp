@@ -1,3 +1,7 @@
+var wind_chill = 0;
+var rain = false;
+var sunny = false;
+
 $(function(){
 	var state = "IL";
 	var city = "Evanston";
@@ -26,6 +30,8 @@ $(function(){
 		success: function(parsed_json) {
 			var precip = parsed_json['forecast']['txt_forecast']['forecastday'][((time < 17) ? 0 : 1)]['pop'];
 			var icon = parsed_json['forecast']['txt_forecast']['forecastday'][((time < 17) ? 0 : 1)]['icon_url'];
+			if (precip > 50) {
+				rain = true;}
 		
 			$("#precip").append(precip);
 			$("#weather").attr("src", icon);
@@ -44,6 +50,7 @@ $(function(){
 		success: function(parsed_json) {
 			var wind_dir = parsed_json['current_observation']['wind_dir'];
 			var wind_mph = parsed_json['current_observation']['wind_mph'];
+			wind_chill = parsed_json['current_observation']['windchill_f']
 			$("#wind_mph").append(wind_mph);
 			$("#wind_dir").append(wind_dir);
 		},
@@ -54,3 +61,20 @@ $(function(){
 
 	});
 });
+
+function findcondition(windchilltemp) {
+	if (windchilltemp < 45) {
+		return 'cold';}
+	if (windchilltemp < 70) {
+		return 'mild';}
+	return 'warm';
+}
+
+function listsuggestions() {
+	var condition = findcondition(wind_chill);
+	console.log(condition);
+	document.getElementById(condition).style.display='block';
+	if (rain==true) {
+		document.getElementById('rain').style.display='block';
+	}
+}
