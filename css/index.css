@@ -7,12 +7,12 @@
 
 #weather-text {
 	text-align: right;
-	color: white;
+	color: black;
+	font-size: medium;
 }
 
 #weather {
-	height: 200px;
-	width: 200px;	
+	width: 200%;	
 }
 
 #imagewrap {
@@ -45,6 +45,15 @@
 	float: left;
 	list-style: none;
 	width: 100%;
+}
+
+h1 span {
+	margin-left: 2%;
+	color: black;
+}
+
+h1 {
+	color: black;
 }
 
 #error {
