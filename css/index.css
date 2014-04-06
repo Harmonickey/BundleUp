@@ -4,6 +4,10 @@
 	padding: 10px;
 }
 
+.weather-header h1 {
+	text-align: right;	
+}
+
 #weather-text {
 	text-align: right;
 	color: black;
