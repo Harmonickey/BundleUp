@@ -11,7 +11,7 @@
 }
 
 #weather {
-	width: 100%;
+	width: 200%;
 }
 
 #imagewrap {
@@ -44,6 +44,14 @@
 	float: left;
 	list-style: none;
 	width: 100%;
+}
+
+h1 span {
+	margin-left: 2%;
+}
+
+h1 {
+	color: black;
 }
 
 #error {
