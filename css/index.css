@@ -1,5 +1,5 @@
 .weather-header {
-	height: 165px;
+	height: 220px;
 	background-color: gray;
 	border-radius: 5px;
 	padding: 10px;
@@ -8,11 +8,11 @@
 #weather-text {
 	text-align: right;
 	color: white;
-	font-size: large;
 }
 
 #weather {
-	width: 300%;
+	height: 200px;
+	width: 200px;	
 }
 
 #imagewrap {
@@ -30,9 +30,9 @@
 
 .suggestion p {
 	text-align: left;
-	margin-top: 30px;
-	margin-left: 30%;
-	font-size: large;
+	margin-top: 50px;
+	margin-left: 50%;
+	font-size: 30px;
 }
 
 .suggestion img {
