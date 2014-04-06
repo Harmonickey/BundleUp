@@ -1,18 +1,17 @@
 .weather-header {
 	height: 165px;
 	background-color: gray;
-	border-radius: 5px;
 	padding: 10px;
 }
 
 #weather-text {
 	text-align: right;
 	color: black;
-	font-size: large;
+	font-size: medium;
 }
 
 #weather {
-	width: 300%;
+	width: 100%;
 }
 
 #imagewrap {
@@ -36,7 +35,7 @@
 }
 
 .suggestion img {
-	width: 35%;
+	width: 50%;
 	float: left;
 	margin-bottom: 50px;
 }
