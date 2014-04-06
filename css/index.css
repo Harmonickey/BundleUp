@@ -1,0 +1,53 @@
+.weather-header {
+	height: 220px;
+	background-color: gray;
+	border-radius: 5px;
+	padding: 10px;
+}
+
+#weather-text {
+	text-align: right;
+	color: white;
+}
+
+#weather {
+	height: 200px;
+	width: 200px;	
+}
+
+#imagewrap {
+	height: 250px;
+}
+
+#lead {
+	float: left;
+}
+
+.suggestion {
+	clear: both;
+	vertical-align: middle;
+}
+
+.suggestion p {
+	text-align: left;
+	margin-top: 50px;
+	margin-left: 50%;
+	font-size: 30px;
+}
+
+.suggestion img {
+	width: 35%;
+	float: left;
+	margin-bottom: 50px;
+}
+
+.suggestion li {
+	float: left;
+	list-style: none;
+	width: 100%;
+}
+
+#error {
+	color: red;
+	font-style: italic;	
+}
