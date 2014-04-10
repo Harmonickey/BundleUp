@@ -51,7 +51,7 @@ $(function(){
                         var temp_f = parsed_json['current_observation']['temp_f'];
 			var wind_dir = parsed_json['current_observation']['wind_dir'];
 			var wind_mph = parsed_json['current_observation']['wind_mph'];
-			wind_chill = parsed_json['current_observation']['windchill_f'];
+			wind_chill = parsed_json['current_observation']['feelslike_f'];
                         var icon_url = parsed_json['current_observation']['icon_url'];
                         $("#temp").append(temp_f);
 			$("#wind_mph").append(wind_mph);
