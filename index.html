@@ -18,7 +18,9 @@
       <!-- JS/JQuery-->
       <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
       <script type="text/javascript" src="js/bootstrap.js"></script>
+      <script src="./js/bootstrap.min.js"></script>
       <script type="text/javascript" src="js/bundleup.js"></script>
+      <script src="./js/docs.min.js"></script>
   </head>
   <body onload="listsuggestions()">
     <div class="container">
@@ -33,35 +35,69 @@
 
       <div class="weather-header">
         <div id="imagewrap" class="pull-left">
-          <img id="weather" src="images/cloudy.jpg"/>
+          <img id="weather" src=""/>
         </div>
         <h1><span id="temp"></span>&deg; F </h1>
         <h3 id="weather-text">Chance of Precipitation: <span id="precip"></span>% <br><br/>
         Wind: <span id="wind_mph"></span>mph, <span id="wind_dir"></span> <br><br/>
         </h3>
       </div>
-      <h3 class="text-muted">Suggestions</h3>
+      <div class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <p class="navbar-brand">Suggestions </p>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                <a href="index.html" class="dropdown-toggle" data-toggle="dropdown">Choose the time <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="index.html">The whole day</a></li>
+                  <li class="divider"></li>
+                  <!--<li class="dropdown-header">Nav header</li>-->
+                  <li><a href="index.html">Morning</a></li>
+                  <li><a href="index.html">Noon</a></li>
+                  <li><a href="index.html">Night</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+
+
+
+
+
       <div >
         <!--Cold Options-->
         <div class="suggestion" id="cold" style="display: none">
-          <ul>
+          <ul> 
             <li><img src="images/top/heavy_coat.jpg"/>
-            <p> Heavy Coat </p></li>
+            <p class="alert alert-info"> Heavy Coat <br>
+            <button type="button" class="btn btn-lg btn-success"> Set as my preference </button></p></li>
             <li><img src="images/bottom/pants.jpg"/>
-            <p> Heavy Pants </p></li>
+            <p class="alert alert-success"> Heavy Pants </p></li>
             <li><img src="images/accessories/boot.jpg"/> 
-            <p> Warm Boots </p></li>
+            <p class="alert alert-warning"> Warm Boots </p></li>
             <li><img src="images/accessories/hat.jpg"/> 
-            <p> Winter Hat </p></li>
+            <p class="alert alert-danger"> Winter Hat </p></li>
             <li><img src="images/accessories/scarf.jpg"/> 
-            <p> Scarf </p></li>
+            <p class="alert alert-danger"> Scarf </p></li>
           </ul>
         </div>
         <!--Mild options-->
         <div class="suggestion" id="mild" style="display: none">
           <ul>
             <li><img class="sugg-img pull-left"src="images/top/hoodie.jpg"/>
-            <p> Long Sleeves </p></li>
+            <p class="alert alert-info"> Long Sleeves <br>
+            <button type="button" class="btn btn-lg btn-success"> Set as my preference </button></p></li>
             <li><img class="sugg-img pull-left"src="images/bottom/light-pant.jpg"/>
             <p> Light Pants </p></li>
             <li><img class="sugg-img pull-left"src="images/accessories/sneakers.jpg"/>
@@ -72,9 +108,10 @@
         <div class="suggestion" id="warm" style="display: none">
           <ul>
             <li><img class="sugg-img pull-left"src="images/top/short_sleeve.jpeg"/>
-            <p> Short Sleeves </p><br></li>
+            <p class="alert alert-info"> Short Sleeves <br>
+            <button type="button" class="btn btn-lg btn-success"> Set as my preference </button></p><br></li>
             <li><img class="sugg-img pull-left"src="images/bottom/short.jpg"/>
-            <p> Shorts/Skirt </p></li>
+            <p  class="alert alert-info"> Shorts/Skirt </p></li>
             <li><img class="sugg-img pull-left"src="images/accessories/sandal.jpeg"/>
             <p> Sandals </p></li>
           </ul>
@@ -94,5 +131,8 @@
           </ul>
         </div>
       </div>
+      <script src="./js/jquery.min.js"></script>
+      <script src="./js/bootstrap.min.js"></script>
+      <script src="./js/docs.min.js"></script>
   </body>
 </html>
