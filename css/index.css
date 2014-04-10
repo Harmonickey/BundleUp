@@ -62,3 +62,43 @@ h1 {
 	color: red;
 	font-style: italic;	
 }
+
+/* Below are several settings copied over from jumbotron.css */
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+}
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    margin-bottom: 30px;
+  }
+}
+
+.header {
+  border-bottom: 1px solid #e5e5e5;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.header h3 {
+	padding-bottom: 19px;
+	line-height: 40px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.btn {
+  padding: 14px 24px;
+  font-size: 21px;
+}
