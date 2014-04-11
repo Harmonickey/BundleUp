@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <meta name="mobile-web-app-capable" content="yes">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+      <meta name="description" content="homepage">
+      <meta name="author" content="Kevin Chen">
+      <title> BundleUp </title>
+
+      <!-- CSS -->
+      <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+      <link rel="stylesheet" type="text/css" href="css/jumbotron.css">
+      <link rel="stylesheet" type="text/css" href="css/index.css">
+
+
+      <!-- JS/JQuery-->
+      <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+      <script type="text/javascript" src="js/bootstrap.js"></script>
+      <script type="text/javascript" src="js/bundleup.js"></script>
+  </head>
+  <body onload="listsuggestions()">
+    <div class="container">
+      <div class="header">
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        <h3 class="text-muted">BundleUp</h3>
+      </div>
+
+      <div class="weather-header">
+        <div id="imagewrap" class="pull-left">
+          <img id="weather" src="images/cloudy.jpg"/>
+        </div>
+        <h1><span id="temp"></span>&deg; F </h1>
+        <h3 id="weather-text">Chance of Precipitation: <span id="precip"></span>% <br><br/>
+        Wind: <span id="wind_mph"></span>mph, <span id="wind_dir"></span> <br><br/>
+        </h3>
+      </div>
+      <h3 class="text-muted">Suggestions</h3>
+      <div >
+        <!--Cold Options-->
+        <div class="suggestion" id="cold" style="display: none">
+          <ul>
+            <li><img src="images/top/heavy_coat.jpg"/>
+            <p> Heavy Coat </p></li>
+            <li><img src="images/bottom/pants.jpg"/>
+            <p> Heavy Pants </p></li>
+            <li><img src="images/accessories/boot.jpg"/> 
+            <p> Warm Boots </p></li>
+            <li><img src="images/accessories/hat.jpg"/> 
+            <p> Winter Hat </p></li>
+            <li><img src="images/accessories/scarf.jpg"/> 
+            <p> Scarf </p></li>
+          </ul>
+        </div>
+        <!--Mild options-->
+        <div class="suggestion" id="mild" style="display: none">
+          <ul>
+            <li><img class="sugg-img pull-left"src="images/top/hoodie.jpg"/>
+            <p> Long Sleeves </p></li>
+            <li><img class="sugg-img pull-left"src="images/bottom/light-pant.jpg"/>
+            <p> Light Pants </p></li>
+            <li><img class="sugg-img pull-left"src="images/accessories/sneakers.jpg"/>
+            <p> Light Shoes </p></li>
+          </ul>
+        </div>
+        <!--Warm options-->
+        <div class="suggestion" id="warm" style="display: none">
+          <ul>
+            <li><img class="sugg-img pull-left"src="images/top/short_sleeve.jpeg"/>
+            <p> Short Sleeves </p><br></li>
+            <li><img class="sugg-img pull-left"src="images/bottom/short.jpg"/>
+            <p> Shorts/Skirt </p></li>
+            <li><img class="sugg-img pull-left"src="images/accessories/sandal.jpeg"/>
+            <p> Sandals </p></li>
+          </ul>
+        </div>
+        <div class="suggestion" id="sunny" style="display: none">
+          <ul>
+            <li><img class="sugg-img pull-left"src="images/accessories/sunglasses.jpg"/>
+            <p> Sunglasses </p></li>
+          </ul>
+        </div>
+        <div class="suggestion" id="rain" style="display: none">
+          <ul>
+            <li><img class="sugg-img pull-left"src="images/accessories/umbrella.jpeg"/>
+            <p> Umbrella </p></li>
+            <li><img class="sugg-img pull-left"src="images/accessories/rainboots.jpg"/>
+            <p> Rain Boots </p></li>
+          </ul>
+        </div>
+      </div>
+  </body>
+</html>

@@ -3,6 +3,39 @@ var rain = false;
 var sunny = false;
 
 $(function(){
+	
+    $.ajax( {
+		type: 'GET',
+		url: "https://api.parse.com/1/classes/WeatherUpdate/BHlqXercLn",
+		headers: {
+				"X-Parse-Application-Id" : "O7uQwzz4oo6M9QfO8wrowXsQFl42DLltwCmuVpBS",
+				"X-Parse-REST-API-Key": "ebM93An1KNTa5SrUmZXttv8mav1nrBSj6l2CMhVf"
+		},
+		dataType: 'json',
+		success: function(ret) {
+			
+			var date = ret.updateAt;
+			var weather = ret.weather;
+			var location = ret.location;
+			
+			/*
+			var date = new Date(ret.updateAt);
+			var num_milli = date.getTime();
+			
+			var currentTime = new Date();
+			var currentMilli = currentTime.getTime();
+			*/
+			
+			if (/*more than 10 minutes */)
+			{
+				//call the api....	
+				
+				//then update info in parse
+			}
+			
+		}
+	});
+	
 	var state = "IL";
 	var city = "Evanston";
         /*
@@ -21,7 +54,6 @@ $(function(){
 		}
 
 	});
-        */
 
 	var date = new Date();
 	var time = date.getHours();
@@ -64,7 +96,33 @@ $(function(){
 		}
 
 	});
+	*/
 });
+
+function updateParse(objectID) {
+		 $.ajax( {
+			type: 'PUT',
+			url: "https://api.parse.com/1/classes/WeatherUpdate/" + objectID,
+			headers: {
+					"X-Parse-Application-Id" : "O7uQwzz4oo6M9QfO8wrowXsQFl42DLltwCmuVpBS",
+					"X-Parse-REST-API-Key": "ebM93An1KNTa5SrUmZXttv8mav1nrBSj6l2CMhVf"
+			},
+			dataType: 'json',
+			data: {
+				weather: {
+					temp: ,
+					precip: ,
+					wind: 
+				},
+				location: ?
+				,
+				
+			}
+			success: function(ret) {
+				
+			}
+	});
+}
 
 function findcondition(windchilltemp) {
 	if (windchilltemp < 45) {
