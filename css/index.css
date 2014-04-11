@@ -85,6 +85,10 @@ h1 {
 	font-style: italic;	
 }
 
+#suggestion-text {
+	padding-left: 15px;
+}
+
 /* Header / Body */
 
 /* Below are several settings copied over from jumbotron.css 
