@@ -1,3 +1,13 @@
+/* SECTIONS:
+
+   1. Weather box
+   2. Suggestions
+   3. Text
+   4. Header/Body formatting;
+
+
+/* Weather report information */
+
 .weather-header {
 	height: 165px;
 	background-color: silver;
@@ -22,6 +32,15 @@
 	height: 250px;
 }
 
+<<<<<<< HEAD
+=======
+#lead {
+	float: left;
+}
+
+/* Suggestions */
+
+>>>>>>> 3b963a709f254504495246ce4e768058cf36b702
 .suggestion {
 	clear: both;
 	vertical-align: middle;
@@ -47,6 +66,8 @@
 	width: 100%;
 }
 
+/* Text formatting */
+
 h1 span {
 	margin-left: 2%;
 }
@@ -58,4 +79,48 @@ h1 {
 #error {
 	color: red;
 	font-style: italic;	
+}
+
+/* Header / Body */
+
+/* Below are several settings copied over from jumbotron.css 
+   Most of these are for formatting the header and body.
+   Insert above this comment. */
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+}
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    margin-bottom: 30px;
+  }
+}
+
+.header {
+  border-bottom: 1px solid #e5e5e5;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.header h3 {
+	padding-bottom: 19px;
+	line-height: 40px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.btn {
+  padding: 14px 24px;
+  font-size: 21px;
 }
