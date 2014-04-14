@@ -2,29 +2,75 @@ var wind_chill = 0;
 var rain = false;
 var sunny = false;
 
+var state = sGeobytesRegion;
+var city = sGeobytesCity;
+
+
+
 $(function(){
-	var state = "IL";
-	var city = "Evanston";
-        /*
+	$("#city_label").html(city + ", ");
+	$("#state_label").html(state);
+	getForecast();
+});
+
+function findcondition(windchilltemp) {
+	if (windchilltemp < 45) {
+		return 'cold';}
+	if (windchilltemp < 70) {
+		return 'mild';}
+	return 'warm';
+}
+
+function getForecastHourly(timeOfDay) {
+	var time;
+	if (timeOfDay) {
+	  switch (timeOfDay) {
+	  	case 'Morning':
+			time = 6;
+		break;
+		case 'Noon':
+			time = 12;
+		break;
+		case 'Night': 
+			time = 18;
+		break; 
+	  }
+	}	
+	
 	$.ajax({
-		url:"http://api.wunderground.com/api/5bb4e5428ca66275/geolookup/conditions/q/"
+		url:"http://api.wunderground.com/api/5bb4e5428ca66275/hourly/q/"
 		+state+"/"+city+".json",
 		dataType:"jsonp",
 		success: function(parsed_json) {
-			var location = parsed_json['location']['city'];
-			var temp_f = parsed_json['current_observation']['temp_f'];
-			$("#temp").append(temp_f);
+			var hourly = parsed_json['hourly_forecast'];
+			for (var i = 0; i < hourly.length; i++) {
+				if (hourly[i].FCTTIME.hour >= time) {
+					var temp_f = hourly[i].temp.english;
+					var icon_url = hourly[i].icon_url;
+					var wind_mph = hourly[i].wspd.english;
+					var wind_dir = hourly[i].wdir.dir;
+					var precip = hourly[i].pop;
+					$("#temp").append(temp_f);
+					$("#wind_mph").append(wind_mph);
+					$("#wind_dir").append(wind_dir);
+                    $("#weather").attr("src", icon_url);
+					$("#precip").append(precip);
+					break;
+				}
+			}
+			
 		},
 		error: function() {
-			$("#error").append("Problem with finding current condition.");
+			$("#error").append("Problem with finding forecast.");
 			$("#error").prop("hidden", false);
 		}
-
 	});
-        */
+}
 
+function getForecast() {
 	var date = new Date();
 	var time = date.getHours();
+	
 	$.ajax({
 		url:"http://api.wunderground.com/api/5bb4e5428ca66275/forecast/q/"
 		+state+"/"+city+".json",
@@ -63,15 +109,7 @@ $(function(){
 			$("#error").prop("hidden", false);
 		}
 
-	});
-});
-
-function findcondition(windchilltemp) {
-	if (windchilltemp < 45) {
-		return 'cold';}
-	if (windchilltemp < 70) {
-		return 'mild';}
-	return 'warm';
+	});	
 }
 
 function listsuggestions() {
@@ -80,4 +118,10 @@ function listsuggestions() {
 	if (rain==true) {
 		document.getElementById('rain').style.display='block';
 	}
+}
+
+function changeCityState() {
+  city = $("#city");
+  state = $("#state");
+  getForecast();
 }

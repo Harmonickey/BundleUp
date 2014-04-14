@@ -142,3 +142,8 @@ body {
   padding: 14px 24px;
   font-size: 21px;
 }
+
+#city_label,
+#state_label {
+	float: left;
+}
