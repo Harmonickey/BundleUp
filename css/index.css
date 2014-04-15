@@ -1,52 +1,186 @@
+<<<<<<< HEAD
 .weather-header {
 	height: 220px;
 	background-color: gray;
 	border-radius: 5px;
-	padding: 10px;
+=======
+body {
+	font-family: Helvetica;
 }
 
-#weather-text {
+.search {
+	background: #1F1F1F;
+	width: 100%;
+	height: 1000px;
+	color: #B8B8B8;
+	font-size: xx-large;
+	padding-top: 10%;
+	text-align: center;
+}
+
+.search label {
+	font-weight: normal;
+	color: white;
+	padding-top: 5%;
+}
+
+.search form {
+	font-size: medium;
+	color: black;
+}
+
+.header {
+	background: #333333;
+	width: 100%;
+>>>>>>> master
+	padding: 10px;
+	position: relative;
+}
+
+.header span {
+	font-weight: bold;
+	font-size: large;
+	margin-left: 10%;
+	color: #969696;
+}
+
+.break {
+	background: #969696;
+	background: orange;
+	height: 1px;
+	width: 100%;
+	position: relative;
+}
+
+.breakw {
+	background: black;
+	width: 100%;
+	text-align: center;
+	padding: 20px;
+	font-size: x-large;
+	color: #666666;
+}
+
+.details {
+	background: black;
+	opacity: 1;
+	width: 100%;
+}
+
+.details .maintemp {
+	width: 50%;
+	font-size: xx-large;
+	color: white;
+	padding: 20px;
+	border-right: thin solid #B8B8B8;
 	text-align: right;
+<<<<<<< HEAD
 	color: black;
 	font-size: medium;
 }
 
 #weather {
 	width: 200%;	
+=======
+	vertical-align: middle;
 }
 
-#imagewrap {
-	height: 250px;
+.details .otherdetails {
+	text-align: left;
+	color: #666666;
+	font-size: xx-large;
+	width: 50%;
+	padding: 20px;
+	margin-top: -85px;
+	float: right;
 }
 
-#lead {
+.moredetails {
+	width: 100%;
+	background: #333333;
+	padding: 10px;
+}
+
+.moredetails h4 {
+	text-align: center;
+	color: orange;
+}
+
+.moredetails .dtitle  {
+	width: 50%;
+	text-align: left;
+	color: white;
+	padding: 5px;
+	border-bottom: thin solid orange;
+}
+
+.moredetails .extras {
+	width: 50%;
+	text-align: left;
+	color: #B8B8B8;
+	padding: 5px;
+	font-size: medium;
+	font-weight: lighter;
+	border-bottom: thin solid orange;
+>>>>>>> master
+}
+
+.moredetails .extras span {
+	color: white;
+	float: right;
+}
+
+.moredetails img {
+	float: right;
+	margin-right: 10%;
+	margin-top: 100px;
+	width: 30%;
+	max-width: 200px;
+	margin-top: -100px;
+}
+
+.sug {
+	background: #333333;
 	float: left;
 }
 
 .suggestion {
 	clear: both;
 	vertical-align: middle;
+	background: #333333;
 }
 
 .suggestion p {
+<<<<<<< HEAD
 	text-align: left;
 	margin-top: 50px;
 	margin-left: 50%;
 	font-size: 30px;
+=======
+	text-align: center;
+	margin-top: 120px;
+	font-size: large;
+	background: #333333;
+	color: white;
+>>>>>>> master
 }
 
 .suggestion img {
-	width: 35%;
+	width: 50%;
 	float: left;
 	margin-bottom: 50px;
+	margin-left: 5%;
+	background: #333333;
 }
 
 .suggestion li {
 	float: left;
 	list-style: none;
 	width: 100%;
+	background: #333333;
 }
 
+<<<<<<< HEAD
 h1 span {
 	margin-left: 2%;
 	color: black;
@@ -60,3 +194,5 @@ h1 {
 	color: red;
 	font-style: italic;	
 }
+=======
+>>>>>>> master
