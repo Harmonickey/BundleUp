@@ -1,5 +1,6 @@
 body {
 	font-family: Helvetica;
+	min-width: 320px;
 }
 
 .search {
@@ -8,7 +9,7 @@ body {
 	height: 1000px;
 	color: #B8B8B8;
 	font-size: xx-large;
-	padding-top: 10%;
+	padding-top: 25%;
 	text-align: center;
 }
 
@@ -35,6 +36,11 @@ body {
 	font-size: large;
 	margin-left: 10%;
 	color: #969696;
+}
+
+.header a {
+	font-size: x-large;
+	color: orange;
 }
 
 .break {
@@ -78,6 +84,7 @@ body {
 	padding: 20px;
 	margin-top: -85px;
 	float: right;
+	overflow: hidden;
 }
 
 .moredetails {
@@ -92,7 +99,7 @@ body {
 }
 
 .moredetails .dtitle  {
-	width: 50%;
+	width: 55%;
 	text-align: left;
 	color: white;
 	padding: 5px;
@@ -100,14 +107,13 @@ body {
 }
 
 .moredetails .extras {
-	width: 50%;
+	width: 55%;
 	text-align: left;
 	color: #B8B8B8;
 	padding: 5px;
 	font-size: medium;
 	font-weight: lighter;
 	border-bottom: thin solid orange;
->>>>>>> master
 }
 
 .moredetails .extras span {
@@ -119,7 +125,7 @@ body {
 	float: right;
 	margin-right: 10%;
 	margin-top: 100px;
-	width: 30%;
+	width: 25%;
 	max-width: 200px;
 	margin-top: -100px;
 }
@@ -127,6 +133,7 @@ body {
 .sug {
 	background: #333333;
 	float: left;
+	width: 100%;
 }
 
 .suggestion {
@@ -136,15 +143,14 @@ body {
 }
 
 .suggestion p {
-	text-align: center;
-	margin-top: 120px;
+	margin-top: 50px;
 	font-size: large;
 	background: #333333;
 	color: white;
 }
 
 .suggestion img {
-	width: 50%;
+	width: 40%;
 	float: left;
 	margin-bottom: 50px;
 	margin-left: 5%;
@@ -158,3 +164,26 @@ body {
 	background: #333333;
 }
 
+
+
+
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+}
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    margin-bottom: 30px;
+  }
+}
+
+.btn {
+  padding: 14px 24px;
+  font-size: 21px;
+}
