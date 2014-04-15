@@ -59,10 +59,10 @@ function getWeather() {
 
 	$.ajax( {
 		//5bb4e5428ca66275
-		url : "http://api.wunderground.com/api/871d6fab2c5007d4/forecast/q/" + state + "/"+city+".json",
+		url : "http://api.wunderground.com/api/871d6fab2c5007d4/hourly/q/" + state + "/"+city+".json",
 		dataType: "jsonp",
 		success: function(parsed_json) {
-			var precip = parsed_json['forecast']['txt_forecast']['forecastday'][((time < 17) ? 0 : 1)]['pop'];
+			var precip = parsed_json['hourly_forecast']['pop']['english'];
 			console.log(precip);
 			if (precip > 50) {
 				setrain();
