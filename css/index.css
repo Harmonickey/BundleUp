@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-.weather-header {
-	height: 220px;
-	background-color: gray;
-	border-radius: 5px;
-=======
 body {
 	font-family: Helvetica;
 }
@@ -32,7 +26,6 @@ body {
 .header {
 	background: #333333;
 	width: 100%;
->>>>>>> master
 	padding: 10px;
 	position: relative;
 }
@@ -74,14 +67,6 @@ body {
 	padding: 20px;
 	border-right: thin solid #B8B8B8;
 	text-align: right;
-<<<<<<< HEAD
-	color: black;
-	font-size: medium;
-}
-
-#weather {
-	width: 200%;	
-=======
 	vertical-align: middle;
 }
 
@@ -151,18 +136,11 @@ body {
 }
 
 .suggestion p {
-<<<<<<< HEAD
-	text-align: left;
-	margin-top: 50px;
-	margin-left: 50%;
-	font-size: 30px;
-=======
 	text-align: center;
 	margin-top: 120px;
 	font-size: large;
 	background: #333333;
 	color: white;
->>>>>>> master
 }
 
 .suggestion img {
@@ -180,19 +158,3 @@ body {
 	background: #333333;
 }
 
-<<<<<<< HEAD
-h1 span {
-	margin-left: 2%;
-	color: black;
-}
-
-h1 {
-	color: black;
-}
-
-#error {
-	color: red;
-	font-style: italic;	
-}
-=======
->>>>>>> master
