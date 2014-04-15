@@ -1,144 +1,159 @@
-/* SECTIONS:
+body {
+	font-family: Helvetica;
+}
 
-   1. Weather box
-   2. Suggestions
-   3. Text
-   4. Header/Body formatting;
+.search {
+	background: #1F1F1F;
+	width: 100%;
+	height: 1000px;
+	color: #B8B8B8;
+	font-size: xx-large;
+	padding-top: 10%;
+	text-align: center;
+}
 
+.search label {
+	font-weight: normal;
+	color: white;
+	padding-top: 5%;
+}
 
-/* Weather report information */
+.search form {
+	font-size: medium;
+	color: black;
+}
 
-.weather-header {
-	height: 165px;
-	background-color: silver;
+.header {
+	background: #333333;
+	width: 100%;
+	padding: 10px;
+	position: relative;
+}
+
+.header span {
+	font-weight: bold;
+	font-size: large;
+	margin-left: 10%;
+	color: #969696;
+}
+
+.break {
+	background: #969696;
+	background: orange;
+	height: 1px;
+	width: 100%;
+	position: relative;
+}
+
+.breakw {
+	background: black;
+	width: 100%;
+	text-align: center;
+	padding: 20px;
+	font-size: x-large;
+	color: #666666;
+}
+
+.details {
+	background: black;
+	opacity: 1;
+	width: 100%;
+}
+
+.details .maintemp {
+	width: 50%;
+	font-size: xx-large;
+	color: white;
+	padding: 20px;
+	border-right: thin solid #B8B8B8;
+	text-align: right;
+	vertical-align: middle;
+}
+
+.details .otherdetails {
+	text-align: left;
+	color: #666666;
+	font-size: xx-large;
+	width: 50%;
+	padding: 20px;
+	margin-top: -85px;
+	float: right;
+}
+
+.moredetails {
+	width: 100%;
+	background: #333333;
 	padding: 10px;
 }
 
-.weather-header h1 {
-	text-align: right;	
+.moredetails h4 {
+	text-align: center;
+	color: orange;
 }
 
-#weather-text {
-	text-align: right;
-	color: black;
+.moredetails .dtitle  {
+	width: 50%;
+	text-align: left;
+	color: white;
+	padding: 5px;
+	border-bottom: thin solid orange;
+}
+
+.moredetails .extras {
+	width: 50%;
+	text-align: left;
+	color: #B8B8B8;
+	padding: 5px;
 	font-size: medium;
+	font-weight: lighter;
+	border-bottom: thin solid orange;
 }
 
-#weather {
-	width: 100%;
-	height: 100%;
+.moredetails .extras span {
+	color: white;
+	float: right;
 }
 
-#imagewrap {
-	height: 145px;
-	width: 145px;
+.moredetails img {
+	float: right;
+	margin-right: 10%;
+	margin-top: 100px;
+	width: 30%;
+	max-width: 200px;
+	margin-top: -100px;
 }
 
-#lead {
+.sug {
+	background: #333333;
 	float: left;
-}
-
-#time-changer {
-	min-width: 0px;
-	width: 128px;
-}
-
-/* Suggestions */
-
-input[type="text"] {
-	background-color: white;
-	border: none;
-	font-size: 20px;
-	font-weight: 200;
-	width: 20%;
-	text-align: right;
-	margin-top: 10px;
 }
 
 .suggestion {
 	clear: both;
 	vertical-align: middle;
+	background: #333333;
 }
 
 .suggestion p {
 	text-align: center;
 	margin-top: 120px;
-	margin-left: 30%;
 	font-size: large;
-	font-weight: bold;
+	background: #333333;
+	color: white;
 }
 
 .suggestion img {
 	width: 50%;
 	float: left;
 	margin-bottom: 50px;
+	margin-left: 5%;
+	background: #333333;
 }
 
 .suggestion li {
 	float: left;
 	list-style: none;
 	width: 100%;
+	background: #333333;
 }
 
-/* Text formatting */
-
-h1 span {
-	margin-left: 2%;
-}
-
-h1 {
-	color: black;
-}
-
-#error {
-	color: red;
-	font-style: italic;	
-}
-
-#suggestion-text {
-	padding-left: 15px;
-}
-
-/* Header / Body */
-
-/* Below are several settings copied over from jumbotron.css 
-   Most of these are for formatting the header and body.
-   Insert above this comment. */
-
-@media (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
-}
-.container-narrow > hr {
-  margin: 30px 0;
-}
-
-@media screen and (min-width: 768px) {
-  .header {
-    margin-bottom: 30px;
-  }
-}
-
-.header {
-  border-bottom: 1px solid #e5e5e5;
-  padding-right: 15px;
-  padding-left: 15px;
-}
-
-.header h3 {
-	padding-bottom: 19px;
-	line-height: 40px;
-	margin-top: 0px;
-	margin-bottom: 0px;
-}
-
-body {
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
-
-.btn {
-  padding: 14px 24px;
-  font-size: 21px;
-}

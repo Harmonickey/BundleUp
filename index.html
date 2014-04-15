@@ -21,103 +21,14 @@
       <script type="text/javascript" src="js/bundleup.js"></script>
       <script src="./js/docs.min.js"></script>
   </head>
-  <body onload="listsuggestions()">
-    <div class="container">
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-        <h3 class="text-muted">BundleUp</h3>
+  <body>
+    <div class="search">BundleUp
+      <form action="testindex.html">
+        <label for="location">Location</label><br>
+          <input id="city" type="text" autofocus="autofocus" placeholder="City" size="15"/><br><br>
+          <input id="state" type="text" placeholder="State" size="15"/><br><br>
+        <input type="submit" value="Submit" onclick="getLocation(this.form)">
+      </form>
       </div>
-
-      <div class="weather-header">
-        <div id="imagewrap" class="pull-left">
-          <img id="weather" src=""/>
-        </div>
-        <h1><span id="temp"></span>&deg; F </h1>
-        <h3 id="weather-text">Chance of Precipitation: <span id="precip"></span>% <br><br/>
-        Wind: <span id="wind_mph"></span>mph, <span id="wind_dir"></span> <br><br/>
-        </h3>
-      </div>
-      <div class="navbar navbar-default">
-        <label>Enter your location: </label>
-        <input id="city" type="text">
-        <ul class="nav navbar-nav pull-right">
-          <li class="dropdown">
-            <a href="index.html" class="dropdown-toggle" data-toggle="dropdown"> Change time: <b class="caret"></b></a>
-            <ul class="dropdown-menu dropdown-menu-right" id="time-changer">
-              <li><a href="index.html">The whole day</a></li>
-              <li class="divider"></li>
-              <!--<li class="dropdown-header">Nav header</li>-->
-              <li><a href="index.html">Morning</a></li>
-              <li><a href="index.html">Noon</a></li>
-              <li><a href="index.html">Night</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-      <div >
-
-      <h3 id="suggestion-text" class="text-muted"> Suggestions </h3>
-        <!--Cold Options-->
-        <div class="suggestion" id="cold" style="display: none">
-          <ul> 
-            <li><img src="images/top/heavy_coat.jpg"/>
-            <p class="alert alert-info"> Heavy Coat <br>
-            <button type="button" class="btn btn-lg btn-success"> Set as my preference </button></p></li>
-            <li><img src="images/bottom/pants.jpg"/>
-            <p class="alert alert-success"> Heavy Pants </p></li>
-            <li><img src="images/accessories/boot.jpg"/> 
-            <p class="alert alert-warning"> Warm Boots </p></li>
-            <li><img src="images/accessories/hat.jpg"/> 
-            <p class="alert alert-danger"> Winter Hat </p></li>
-            <li><img src="images/accessories/scarf.jpg"/> 
-            <p class="alert alert-danger"> Scarf </p></li>
-          </ul>
-        </div>
-        <!--Mild options-->
-        <div class="suggestion" id="mild" style="display: none">
-          <ul>
-            <li><img class="sugg-img pull-left"src="images/top/hoodie.jpg"/>
-            <p class="alert alert-info"> Long Sleeves <br>
-            <button type="button" class="btn btn-lg btn-success"> Set as my preference </button></p></li>
-            <li><img class="sugg-img pull-left"src="images/bottom/light-pant.jpg"/>
-            <p> Light Pants </p></li>
-            <li><img class="sugg-img pull-left"src="images/accessories/sneakers.jpg"/>
-            <p> Light Shoes </p></li>
-          </ul>
-        </div>
-        <!--Warm options-->
-        <div class="suggestion" id="warm" style="display: none">
-          <ul>
-            <li><img class="sugg-img pull-left"src="images/top/short_sleeve.jpeg"/>
-            <p class="alert alert-info"> Short Sleeves <br>
-            <button type="button" class="btn btn-lg btn-success"> Set as my preference </button></p><br></li>
-            <li><img class="sugg-img pull-left"src="images/bottom/short.jpg"/>
-            <p  class="alert alert-info"> Shorts/Skirt </p></li>
-            <li><img class="sugg-img pull-left"src="images/accessories/sandal.jpeg"/>
-            <p> Sandals </p></li>
-          </ul>
-        </div>
-        <div class="suggestion" id="sunny" style="display: none">
-          <ul>
-            <li><img class="sugg-img pull-left"src="images/accessories/sunglasses.jpg"/>
-            <p> Sunglasses </p></li>
-          </ul>
-        </div>
-        <div class="suggestion" id="rain" style="display: none">
-          <ul>
-            <li><img class="sugg-img pull-left"src="images/accessories/umbrella.jpeg"/>
-            <p> Umbrella </p></li>
-            <li><img class="sugg-img pull-left"src="images/accessories/rainboots.jpg"/>
-            <p> Rain Boots </p></li>
-          </ul>
-        </div>
-      </div>
-      <script src="./js/jquery.min.js"></script>
-      <script src="./js/bootstrap.min.js"></script>
-      <script src="./js/docs.min.js"></script>
   </body>
 </html>
