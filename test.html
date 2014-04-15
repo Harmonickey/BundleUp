@@ -1,0 +1,27 @@
+<html>
+<head>
+<script src="brython.js"></script>
+</head>
+<body onload="brython()">
+<script type="text/python">
+	from browser import doc, alert
+
+	def echo(ev):
+		n = int(doc["zone"].value)
+		num = fibnum(0, 1, n-1)
+		doc['output'].html = num
+		alert(num)
+		return
+
+	def fibnum(a, b, n):
+		if n <= 0:
+			return b
+		c = a + b
+		return fibnum(b, c, n-1)
+
+	doc['mybutton'].bind('click',echo)
+</script>
+<input id="zone"><button id="mybutton">click !</button>
+<div id="output"></div>
+</body>
+</html>

@@ -1,8 +1,3 @@
-var rain = false;
-var sunny = false;
-var location;
-var state;
-
 
 function getLocation(form) {
 	var city = form.city.value;
@@ -16,12 +11,12 @@ function getWeather() {
 
 	var city = localStorage.getItem("city");
 	var state = localStorage.getItem("state");
-	$("#loc").append('<-- ' + city + ', ' + state);
+	$("#loc").append(city + ', ' + state);
 	var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "," + state;
 	
 	$.ajax( {
 		type : "POST",
-		dataType : "json",
+		dataType : "jsonp",
 		url : url + "&callback=?",
 		async : false,
 		success : function(data) {
@@ -51,12 +46,42 @@ function getWeather() {
 			$("#weathericon").attr("src", iconurl);
 			desc = data['weather'][0]['main'];
 			$("#desc").append(desc);
+
+			listsuggestions(ftemp);
 		},
 		error : function(errorData) {
 			alert("Error while getting weather data :: " + errorData.status);
 		}
 	});
-	listsuggestions(temp);
+
+	var date = new Date();
+	var time = date.getHours();
+
+	$.ajax( {
+		//5bb4e5428ca66275
+		url : "http://api.wunderground.com/api/871d6fab2c5007d4/hourly/q/" + state + "/"+city+".json",
+		dataType: "jsonp",
+		success: function(parsed_json) {
+			var hourly = parsed_json['hourly_forecast'];
+                        for (var i = 0; i < hourly.length; i++) 
+                        {
+                           if (hourly[i].FCTTIME.hour >= time) {
+                             precip = hourly[i].pop;
+                             break;
+                           }
+                        }
+			console.log(precip);
+			if (precip > 50) {
+				setrain();
+			}
+			$("#precip").prepend(precip);
+		},
+		error: function() {
+			$("#error").append("Problem with finding forecast.");
+			$("#error").prop("hidden", false);
+		}
+	});
+
 	return;
 }
 
@@ -69,12 +94,12 @@ function findcondition(temp) {
 }
 
 function listsuggestions(temp) {
+	console.log(temp);
 	var condition = findcondition(temp);
 	document.getElementById(condition).style.display='block';
-	if (rain==true) {
-		document.getElementById('rain').style.display='block';
-	}
 }
 
-
+function setrain() {
+	document.getElementById('rain').style.display='block';
+}
 
