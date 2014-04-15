@@ -62,7 +62,14 @@ function getWeather() {
 		url : "http://api.wunderground.com/api/871d6fab2c5007d4/hourly/q/" + state + "/"+city+".json",
 		dataType: "jsonp",
 		success: function(parsed_json) {
-			var precip = parsed_json['hourly_forecast']['pop']['english'];
+			var hourly = parsed_json['hourly_forecast'];
+                        for (var i = 0; i < hourly.length; i++) 
+                        {
+                           if (hourly[i].FCTTIME.hour >= time) {
+                             precip = hourly[i].pop;
+                             break;
+                           }
+                        }
 			console.log(precip);
 			if (precip > 50) {
 				setrain();
