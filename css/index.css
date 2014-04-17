@@ -2,6 +2,9 @@ body {
 	font-family: Helvetica;
 	min-width: 320px;
 }
+a:link, a:visited{
+    text-decoration: none;
+}
 
 .search {
 	background: #1F1F1F;
@@ -53,11 +56,23 @@ body {
 
 .breakw {
 	background: black;
-	width: 100%;
-	text-align: center;
+	width: 50%;
+	text-align: right;
+	padding: 20px;
+	border-right: thin solid #B8B8B8;
+	font-size: x-large;
+	color: #666666;
+}
+.timeDropdown {
+	background: black;
+	width: 50%;
+	height: 74px;
+	text-align: left;
 	padding: 20px;
 	font-size: x-large;
 	color: #666666;
+	margin-top: -74px;
+	float: right;
 }
 
 .details {
