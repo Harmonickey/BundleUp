@@ -60,18 +60,17 @@ a:link, a:visited{
 	text-align: right;
 	padding: 20px;
 	border-right: thin solid #B8B8B8;
-	font-size: x-large;
+	font-size: large;
 	color: #666666;
 }
 .timeDropdown {
 	background: black;
 	width: 50%;
-	height: 74px;
 	text-align: left;
 	padding: 20px;
-	font-size: x-large;
+	font-size: large;
 	color: #666666;
-	margin-top: -74px;
+	margin-top: -65px;
 	float: right;
 }
 
