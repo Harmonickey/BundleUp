@@ -21,12 +21,18 @@
       <script type="text/javascript" src="js/bundleup.js"></script>
       <script src="./js/docs.min.js"></script>
   </head>
-  <body>
+  <body onload="setTempPref()">
     <div class="search">BundleUp
       <form action="testindex.html">
         <label for="location">Location</label><br>
-          <input id="city" type="text" autofocus="autofocus" placeholder="City" size="15"/><br><br>
-          <input id="state" type="text" placeholder="State" size="15"/><br><br>
+          <input id="city" type="text" autofocus="autofocus" placeholder="City" size="20"/><br><br>
+          <input id="state" type="text" placeholder="State/Country (Abr)" size="20"/><br><br>
+          <div id="prefs">
+            <span>My temperature preference is...</span><br>
+            <button class="left">Cold</button>
+            <button class="center selected">Default</button>
+            <button class="right">Warm</button>
+          </div><br>
         <input type="submit" value="Submit" onclick="getLocation(this.form)">
       </form>
       </div>
