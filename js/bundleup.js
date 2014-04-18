@@ -102,21 +102,23 @@ function currentLocation(){
 function getWeather(position) {
 	var city;
 	var state;
-
+	console.log(position.coords.latitude)
     var geoAPI = "http://api.wunderground.com/api/871d6fab2c5007d4/geolookup/q/"+ position.coords.latitude +","+ position.coords.longitude+".json";
     $.ajax ({
       dataType : "jsonp",
       url : geoAPI,
       async : false,
       success : function(data) {
+      	console.log(data["location"])
         state = data['location']['state']
         console.log(state)
         city = data['location']['city']
         console.log(city)
+        setWeather(city,state);
       }
     });
-
-
+}
+function setWeather(city,state){
 	var temp = 0;
 /*
 	var city = localStorage.getItem("city");
@@ -125,7 +127,7 @@ function getWeather(position) {
 
 	$("#loc").prepend(city + ', ' + state);
 	var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "," + state;
-	
+	console.log(url);
 	$.ajax( {
 		type : "POST",
 		dataType : "jsonp",
@@ -135,7 +137,6 @@ function getWeather(position) {
 				err = 1;
 				console.log("Failed location");
 				setErrors(err);
-				document.location = "index.html";
 			}
 			else {
 				err = 0;
