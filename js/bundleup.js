@@ -100,13 +100,6 @@ function getLocation(form) {
 }
 
 function getWeather(position) {
-<<<<<<< HEAD
-	var city = sGeobytesCity;
-	var state = sGeobytesRegion;
-
-	var temp = 0;
-
-=======
 	var city;
 	var state;
 
@@ -129,7 +122,7 @@ function getWeather(position) {
 	var city = localStorage.getItem("city");
 	var state = localStorage.getItem("state");
 	*/
->>>>>>> origin/master
+
 	$("#loc").prepend(city + ', ' + state);
 	var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "," + state;
 	
