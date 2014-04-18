@@ -5,8 +5,6 @@ var sunny = false;
 var state = sGeobytesRegion;
 var city = sGeobytesCity;
 
-
-
 $(function(){
 	$("#city_label").html(city + ", ");
 	$("#state_label").html(state);

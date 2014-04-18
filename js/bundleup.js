@@ -1,45 +1,11 @@
 
-function getLocation(form) {
-	var city = form.city.value;
-	localStorage.setItem("city", city);
-	var state = form.state.value;
-	localStorage.setItem("state", state);
-}
-
-function currentLocation(){
-	if (navigator.geolocation){
-    	navigator.geolocation.getCurrentPosition(getWeather);
-    }
-  	else{
-    	alert("Geolocation is not supported by this browser.");
-  }
-}
-
-
 
 function getWeather(position) {
-	var city = "";
-	var state = "";
-
-    var geoAPI = "http://api.wunderground.com/api/871d6fab2c5007d4/geolookup/q/"+position.coords.latitude +","+position.coords.longtitude+".json";
-    $.ajax ({
-      dataType : "json",
-      url : geoAPI,
-      async : false,
-      success : function(data) {
-        state = data['location']['state']
-        console.log(state)
-        city = data['location']['city']
-        console.log(city)
-      }
-    });
-
-
+	var state = sGeobytesRegion;
+	var city = sGeobytesCity;
+	
 	var temp = 0;
-/*
-	var city = localStorage.getItem("city");
-	var state = localStorage.getItem("state");
-	*/
+
 	$("#loc").append(city + ', ' + state);
 	var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "," + state;
 	
@@ -47,7 +13,6 @@ function getWeather(position) {
 		type : "POST",
 		dataType : "jsonp",
 		url : url + "&callback=?",
-		async : false,
 		success : function(data) {
 			temp = data['main']['temp'];
 			ftemp = (9/5)*(temp - 273) + 32;
@@ -82,24 +47,14 @@ function getWeather(position) {
 			alert("Error while getting weather data :: " + errorData.status);
 		}
 	});
-
-	var date = new Date();
-	var time = date.getHours();
-
 	$.ajax( {
 		//5bb4e5428ca66275
 		url : "http://api.wunderground.com/api/871d6fab2c5007d4/hourly/q/" + state + "/"+city+".json",
 		dataType: "jsonp",
 		success: function(parsed_json) {
 			var hourly = parsed_json['hourly_forecast'];
-                        for (var i = 0; i < hourly.length; i++) 
-                        {
-                           if (hourly[i].FCTTIME.hour >= time) {
-                             precip = hourly[i].pop;
-                             break;
-                           }
-                        }
-			console.log(precip);
+			precip = hourly[0].pop;
+			
 			if (precip > 50) {
 				setrain();
 			}
@@ -110,8 +65,49 @@ function getWeather(position) {
 			$("#error").prop("hidden", false);
 		}
 	});
+}
 
-	return;
+function getForecastHourly(timeOfDay) {
+	var time;
+	if (timeOfDay) {
+	  switch (timeOfDay) {
+	  	case 'Morning':
+			time = 6;
+		break;
+		case 'Noon':
+			time = 12;
+		break;
+		case 'Night': 
+			time = 18;
+		break; 
+	  }
+	}	
+	
+	$.ajax({
+		url:"http://api.wunderground.com/api/5bb4e5428ca66275/hourly/q/"
+		+state+"/"+city+".json",
+		dataType:"jsonp",
+		success: function(parsed_json) {
+			var hourly = parsed_json['hourly_forecast'];
+			for (var i = 0; i < hourly.length; i++) {
+				if (hourly[i].FCTTIME.hour >= time) {
+					var temp = hourly[i].temp.english;
+					var wind_mph = hourly[i].wspd.english;
+					var humidity = hourly[i].humidity;
+					var precip = hourly[i].pop;
+					$("#temp").append(temp_f);
+					$("#wind").append(wind_mph);
+					$("#humid").append(humidity);
+					$("#precip").append(precip);
+					break;
+				}
+			}
+		},
+		error: function() {
+			$("#error").append("Problem with finding forecast.");
+			$("#error").prop("hidden", false);
+		}
+	});
 }
 
 function findcondition(temp) {
