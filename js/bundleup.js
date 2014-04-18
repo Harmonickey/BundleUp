@@ -6,9 +6,9 @@ var pref = "default";
 
 //ranges: <20, 20-50, >50
 function setCold() {
-	$("#right").removeClass("selected");
-	$("#center").removeClass("selected");
-	$("#left").addClass("selected");
+	$("#temp_right").removeClass("selected");
+	$("#temp_center").removeClass("selected");
+	$("#temp_left").addClass("selected");
 	lowtemp = 20;
 	hightemp = 50;
 	pref = "cold";
@@ -16,9 +16,9 @@ function setCold() {
 
 //ranges: <45, 45-75, >75
 function setWarm() {
-	$("#left").removeClass("selected");
-	$("#center").removeClass("selected");
-	$("#right").addClass("selected");
+	$("#temp_left").removeClass("selected");
+	$("#temp_center").removeClass("selected");
+	$("#temp_right").addClass("selected");
 	lowtemp = 45;
 	hightemp = 75;
 	pref = "warm";
@@ -26,9 +26,9 @@ function setWarm() {
 
 //ranges: <35, 35-65, >65
 function setDef() {
-	$("#left").removeClass("selected");
-	$("#right").removeClass("selected");
-	$("#center").addClass("selected");
+	$("#temp_left").removeClass("selected");
+	$("#temp_right").removeClass("selected");
+	$("#temp_center").addClass("selected");
 	lowtemp = 35;
 	hightemp = 65;
 	pref = "default";
