@@ -139,6 +139,7 @@ function getWeather(position, city, state) {
 		$.ajax ({
 		  dataType : "jsonp",
 		  url : geoAPI,
+		  async : false,
 		  success : function(data) {
 			console.log(data["location"])
 			state = data['location']['state']
