@@ -6,11 +6,40 @@ function getLocation(form) {
 	localStorage.setItem("state", state);
 }
 
-function getWeather() {
-	var temp = 0;
+function currentLocation(){
+	if (navigator.geolocation){
+    	navigator.geolocation.getCurrentPosition(getWeather);
+    }
+  	else{
+    	alert("Geolocation is not supported by this browser.");
+  }
+}
 
+
+
+function getWeather(position) {
+	var city = "";
+	var state = "";
+
+    var geoAPI = "http://api.wunderground.com/api/871d6fab2c5007d4/geolookup/q/"+position.coords.latitude +","+position.coords.longtitude+".json";
+    $.ajax ({
+      dataType : "json",
+      url : geoAPI,
+      async : false,
+      success : function(data) {
+        state = data['location']['state']
+        console.log(state)
+        city = data['location']['city']
+        console.log(city)
+      }
+    });
+
+
+	var temp = 0;
+/*
 	var city = localStorage.getItem("city");
 	var state = localStorage.getItem("state");
+	*/
 	$("#loc").append(city + ', ' + state);
 	var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "," + state;
 	
