@@ -1,9 +1,94 @@
 
+/*====Temperature Preferences====*/
+
+var lowtemp = 45;
+var hightemp = 75;
+var pref = "default";
+
+//ranges: <20, 20-50, >50
+function setCold() {
+	$("#right").removeClass("selected");
+	$("#center").removeClass("selected");
+	$("#left").addClass("selected");
+	lowtemp = 20;
+	hightemp = 50;
+	pref = "cold";
+}
+
+//ranges: <45, 45-75, >75
+function setWarm() {
+	$("#left").removeClass("selected");
+	$("#center").removeClass("selected");
+	$("#right").addClass("selected");
+	lowtemp = 45;
+	hightemp = 75;
+	pref = "warm";
+}
+
+//ranges: <35, 35-65, >65
+function setDef() {
+	$("#left").removeClass("selected");
+	$("#right").removeClass("selected");
+	$("#center").addClass("selected");
+	lowtemp = 35;
+	hightemp = 65;
+	pref = "default";
+}
+
+function setPref() {
+	var pref2 = localStorage.getItem("pref");
+	if (pref2) {
+		switch(pref2) {
+			case "cold":
+				setCold();
+				break;
+			case "warm":
+				setWarm();
+				break;
+			default:
+				setDef();
+				break;
+		}
+	}
+	else {
+		setDef();
+	}
+}
+
+function storePrefs() {
+	localStorage.setItem("lowtemp", lowtemp);
+	localStorage.setItem("hightemp", hightemp);
+	localStorage.setItem("pref", pref);
+	return true;
+}
+
+
+
+var err = 0;
+
+function setErrors(err) {
+	localStorage.setItem("err", err);
+	console.log("Error set: " + err);
+}
+
+function loadErrors() {
+	err = localStorage.getItem("err");
+	console.log("Error retrieved: " + err);
+	if(err==1) {
+		console.log("Error: " + err);
+		document.getElementById("error").style.display='block';
+	}
+}
+
+
 function getLocation(form) {
 	var city = form.city.value;
 	localStorage.setItem("city", city);
 	var state = form.state.value;
 	localStorage.setItem("state", state);
+	localStorage.setItem("lowtemp", lowtemp);
+	localStorage.setItem("hightemp", hightemp);
+	localStorage.setItem("pref", pref);
 }
 
 +function currentLocation(){
@@ -16,7 +101,7 @@ function getLocation(form) {
 }
 
 function getWeather(position) {
-	var city = "";
+	/*var city = "";
 	var state = "";
 	console.log(position)
 
@@ -33,13 +118,13 @@ function getWeather(position) {
       }
     });
 
-
+*/
 	var temp = 0;
-/*
+
 	var city = localStorage.getItem("city");
 	var state = localStorage.getItem("state");
-	*/
-	$("#loc").append(city + ', ' + state);
+	
+	$("#loc").prepend(city + ', ' + state);
 	var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "," + state;
 	
 	$.ajax( {
@@ -48,6 +133,17 @@ function getWeather(position) {
 		url : url + "&callback=?",
 		async : false,
 		success : function(data) {
+			if(data['message']) {
+				err = 1;
+				console.log("Failed location");
+				setErrors(err);
+				document.location = "index.html";
+			}
+			else {
+				err = 0;
+				console.log("Success location");
+				setErrors(err);
+			}
 			temp = data['main']['temp'];
 			ftemp = (9/5)*(temp - 273) + 32;
 			ftemp = ftemp.toFixed(0);
@@ -75,6 +171,62 @@ function getWeather(position) {
 			desc = data['weather'][0]['main'];
 			$("#desc").append(desc);
 
+			code = data['weather'][0]['id'];
+
+			if ([201, 202, 211, 212, 221, 231, 232].indexOf(code) > -1) {
+				$("#alert_cond").append("Thunderstorms");
+				document.getElementById("alert").style.display='block';
+			}
+			else if([502, 503, 504, 521, 522].indexOf(code) > -1) {
+				$("#alert_cond").append("Heavy Rain");
+				document.getElementById("alert").style.display='block';
+			}
+			else {
+				switch(code) {
+					case 602:
+						$("#alert_cond").append("Heavy Snow");
+						document.getElementById("alert").style.display='block';
+						break;
+					case 611:
+						$("#alert_cond").append("Sleet");
+						document.getElementById("alert").style.display='block';
+						break;
+					case 741:
+						$("#alert_cond").append("Fog");
+						document.getElementById("alert").style.display='block';
+						break;
+					case 900:
+						$("#alert_cond").append("Tornado");
+						document.getElementById("alert").style.display='block';
+						break;
+					case 901:
+						$("#alert_cond").append("Tropical Storm");
+						document.getElementById("alert").style.display='block';
+						break;
+					case 902:
+						$("#alert_cond").append("Hurricane");
+						document.getElementById("alert").style.display='block';
+						break;
+					case 903:
+						$("#alert_cond").append("Extreme Cold");
+						document.getElementById("alert").style.display='block';
+						break;
+					case 904:
+						$("#alert_cond").append("Extreme Heat");
+						document.getElementById("alert").style.display='block';
+						break;
+					case 905:
+						$("#alert_cond").append("High Winds");
+						document.getElementById("alert").style.display='block';
+						break;
+					case 906:
+						$("#alert_cond").append("Hail");
+						document.getElementById("alert").style.display='block';
+						break;
+					default:
+						break;
+				}
+			}
 			listsuggestions(ftemp);
 		},
 		error : function(errorData) {
@@ -114,9 +266,13 @@ function getWeather(position) {
 }
 
 function findcondition(temp) {
-	if (temp < 45) {
+	lowtemp = localStorage.getItem("lowtemp");
+	hightemp = localStorage.getItem("hightemp");
+	console.log(lowtemp);
+	console.log(hightemp);
+	if (temp < lowtemp) {
 		return 'cold';}
-	if (temp < 70) {
+	if (temp < hightemp) {
 		return 'mild';}
 	return 'warm';
 }
