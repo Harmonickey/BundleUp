@@ -90,7 +90,7 @@ function getLocation(form) {
 	localStorage.setItem("pref", pref);
 }
 
-+function currentLocation(){
+function currentLocation(){
 	if (navigator.geolocation){
     	navigator.geolocation.getCurrentPosition(getWeather);
     }
