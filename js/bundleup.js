@@ -1,4 +1,29 @@
 
+var tempsetting = "default";
+
+function setCold() {
+	$("#right").removeClass("selected");
+	$("#center").removeClass("selected");
+	$("#left").addClass("selected");
+	tempsetting = "cold";
+}
+
+function setWarm() {
+	$("#left").removeClass("selected");
+	$("#center").removeClass("selected");
+	$("#right").addClass("selected");
+	tempsetting = "warm";
+}
+
+function setDef() {
+	$("#left").removeClass("selected");
+	$("#right").removeClass("selected");
+	$("#center").addClass("selected");
+	tempsetting = "default";
+}
+
+
+
 function getLocation(form) {
 	var city = form.city.value;
 	localStorage.setItem("city", city);

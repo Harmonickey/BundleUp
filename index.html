@@ -29,9 +29,9 @@
           <input id="state" type="text" placeholder="State/Country (Abr)" size="20"/><br><br>
           <div id="prefs">
             <span>My temperature preference is...</span><br>
-            <button class="left">Cold</button>
-            <button class="center selected">Default</button>
-            <button class="right">Warm</button>
+            <button id="left" onclick="setCold();return false">Cold</button>
+            <button id="center" class="selected" onclick="setDef();return false">Default</button>
+            <button id="right" onclick="setWarm();return false">Warm</button>
           </div><br>
         <input type="submit" value="Submit" onclick="getLocation(this.form)">
       </form>
