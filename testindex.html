@@ -13,15 +13,18 @@
       <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
       <link rel="stylesheet" type="text/css" href="css/index.css">
 
-
       <!-- JS/JQuery-->
       <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
       <script type="text/javascript" src="js/bootstrap.js"></script>
       <script type="text/javascript" src="js/bundleup.js"></script>
   </head>
+
   <body onload="getWeather();">
+    
+
+
     <div class="header">
-      <a href="http://dcs592.github.io/394BU/">&#8592;</a>
+      <a href="menu.html" style="font-size: medium">MENU</a>
       <span>BundleUp</span>
     </div>
     <div class="break"></div>
@@ -32,7 +35,8 @@
     </div>
     <div class="break"></div>
     <div class="moredetails">
-      <a href="http://dcs592.github.io/394BU/"><h4 id="loc"></h4></a>
+       <a href="index.html"><h4 id="loc"><span>&nbsp;(Change)</span></h4></a>
+      <h4 id="loc"></h4>
       <div class="dtitle">Details</div>
       <div class="extras"> 
         Precipitation: &nbsp;<span id="precip">% </span></div>
@@ -46,6 +50,9 @@
       <div class="extras" style="margin-bottom: 20px;">
         Humidity: &nbsp;<span id="humid">% </span></div>
     </div>
+
+    <div class="alert" id="alert"><span id="alert_cond">Alert: </span></div>
+
     <div class="break"></div>
     <div class="breakw">Suggestions</div>
     <div class="timeDropdown">
@@ -63,6 +70,7 @@
           </ul>
       </span>
     </div>
+
     <div class="break"></div>
 
     <div class="sug">

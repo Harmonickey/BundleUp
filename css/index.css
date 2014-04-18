@@ -1,6 +1,8 @@
 body {
 	font-family: Helvetica;
 	min-width: 320px;
+	margin: 0;
+	padding: 0;
 }
 a:link, a:visited{
     text-decoration: none;
@@ -39,7 +41,7 @@ a:link, a:visited{
 .header span {
 	font-weight: bold;
 	font-size: large;
-	margin-left: 10%;
+	margin-left: 15%;
 	color: #969696;
 }
 
@@ -49,7 +51,6 @@ a:link, a:visited{
 }
 
 .break {
-	background: #969696;
 	background: orange;
 	height: 1px;
 	width: 100%;
@@ -149,6 +150,24 @@ a:link, a:visited{
 	margin-top: -100px;
 }
 
+.moredetails a h4 span {
+	font-size: small;
+	color: #428bca;	
+}
+
+.alert {
+	width: 100%;
+	background: #A60000;
+	color: white;
+	font-size: x-large;
+	text-align: center;
+	margin: 0;
+	border-radius: 0;
+	font-style: italic;
+	padding: 10px;
+	display: none;
+}
+
 /*====Suggestions====*/
 .sug {
 	background: #333333;
@@ -227,10 +246,86 @@ button.selected {
    	box-shadow:         inset 0 0 8px #000000;
 }
 
-input [type=submit] {
-	font-size: 25px;
+input[type=submit] {
+	font-size: 35px;
+	padding-left: 40px;
+	padding-right: 40px;
 }
 
+.error {
+	color: red;
+	display: none;
+	font-style: italic;
+	font-size: large;
+	margin-top: 20px;
+	margin-bottom: -10px;
+}
+
+/*====Menu page====*/
+.menu-content {
+	background: #333333;
+	width: 100%;
+	min-height: 750px;
+	height: auto !important;
+	overflow: hidden;
+}
+
+.menu-option {
+	width: 100%;
+	border-bottom: thin solid orange;
+	padding: 20px;
+	color: white;
+	font-size: x-large;
+	font-variant:small-caps;
+}
+
+.menu-option2 {
+	width: 100%;
+	border-bottom: thin solid orange;
+	padding: 20px;
+	color: white;
+	font-size: x-large;
+	font-variant:small-caps;
+}
+
+.menu-option .arrow {
+	transform:rotate(180deg);
+	-ms-transform:rotate(180deg); /* IE 9 */
+	-webkit-transform:rotate(45deg); /* Opera, Chrome, and Safari */
+	float: right;
+	margin-right: 5%;
+	font-weight: 900;
+}
+
+.menu-option:active {
+	background: white;
+	color: #333333;
+}
+
+.menu-prefs {
+	font-size: x-large;
+	text-align: center;
+}
+
+.menu-prefs span {
+	color: white;
+	font-size: x-large;
+	text-align: left;
+}
+
+button.center2 {
+	margin-top: 0;
+}
+
+button.left2 {
+	margin-right: -6px;
+	margin-top: 0;
+}
+
+button.right2 {
+	margin-left: -10px;
+	margin-top: 0;
+}
 
 
 
@@ -254,3 +349,8 @@ input [type=submit] {
   padding: 14px 24px;
   font-size: 21px;
 }
+
+
+
+
+
