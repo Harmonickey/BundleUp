@@ -90,7 +90,7 @@ function getLocation(form) {
 	localStorage.setItem("pref", pref);
 }
 
-function currentLocation(){
++function currentLocation(){
 	if (navigator.geolocation){
     	navigator.geolocation.getCurrentPosition(getWeather);
     }
@@ -99,14 +99,37 @@ function currentLocation(){
   }
 }
 
-
-
 function getWeather(position) {
+<<<<<<< HEAD
 	var city = sGeobytesCity;
 	var state = sGeobytesRegion;
 
 	var temp = 0;
 
+=======
+	var city;
+	var state;
+
+    var geoAPI = "http://api.wunderground.com/api/871d6fab2c5007d4/geolookup/q/"+ position.coords.latitude +","+ position.coords.longitude+".json";
+    $.ajax ({
+      dataType : "jsonp",
+      url : geoAPI,
+      async : false,
+      success : function(data) {
+        state = data['location']['state']
+        console.log(state)
+        city = data['location']['city']
+        console.log(city)
+      }
+    });
+
+
+	var temp = 0;
+/*
+	var city = localStorage.getItem("city");
+	var state = localStorage.getItem("state");
+	*/
+>>>>>>> origin/master
 	$("#loc").prepend(city + ', ' + state);
 	var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "," + state;
 	
