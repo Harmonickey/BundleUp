@@ -19,22 +19,23 @@
       <script type="text/javascript" src="js/bootstrap.js"></script>
       <script src="./js/bootstrap.min.js"></script>
       <script src="./js/docs.min.js"></script>
+      <script src="js/bundleup.js"></script>
   </head>
 
-  <body onload="setPref()">
+  <body onload="setPref(); loadErrors();">
     <div class="search">BundleUp
       <div class="error" id="error">ERROR: Location not found</div>
-      <form action="index.html">
+      <form>
         <label for="location">Location</label><br>
           <input id="city" type="text" autofocus placeholder="City" size="20"/><br><br>
           <input id="state" type="text" placeholder="State/Country (Abr)" size="20"/><br><br>
           <div id="prefs">
             <span>My temperature preference is...</span><br>
-            <button id="left" onclick="setCold();return false">Cold</button>
-            <button id="center" class="selected" onclick="setDef();return false">Default</button>
-            <button id="right" onclick="setWarm();return false">Warm</button>
+            <button id="left" onclick="setCold();">Cold</button>
+            <button id="center" class="selected" onclick="setDef();">Default</button>
+            <button id="right" onclick="setWarm();">Warm</button>
           </div><br>
-        <input type="submit" value="Submit" onclick="getLocation(this.form);">
+        <input type="button" value="Submit" onclick="getLocation(this.form);">
       </form>
       </div>
   </body>
