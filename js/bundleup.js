@@ -6,7 +6,7 @@ function getLocation(form) {
 	localStorage.setItem("state", state);
 }
 
-function currentLocation(){
++function currentLocation(){
 	if (navigator.geolocation){
     	navigator.geolocation.getCurrentPosition(getWeather);
     }
@@ -15,13 +15,12 @@ function currentLocation(){
   }
 }
 
-
-
 function getWeather(position) {
 	var city = "";
 	var state = "";
+	console.log(position)
 
-    var geoAPI = "http://api.wunderground.com/api/871d6fab2c5007d4/geolookup/q/"+position.coords.latitude +","+position.coords.longtitude+".json";
+    var geoAPI = "http://api.wunderground.com/api/871d6fab2c5007d4/geolookup/q/"+ position.coords.latitude +","+ position.coords.longitude+".json";
     $.ajax ({
       dataType : "json",
       url : geoAPI,
