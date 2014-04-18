@@ -15,27 +15,114 @@
 
       <!-- JS/JQuery-->
       <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-      
       <script type="text/javascript" src="js/bootstrap.js"></script>
-      <script src="./js/bootstrap.min.js"></script>
-      <script src="./js/docs.min.js"></script>
+      <script type="text/javascript" src="js/bundleup.js"></script>
   </head>
 
-  <body onload="setTempPref()">
-    <div class="search">BundleUp
-      <div class="error" id="error">ERROR: Location not found</div>
-      <form action="testindex.html">
-        <label for="location">Location</label><br>
-          <input id="city" type="text" autofocus placeholder="City" size="20"/><br><br>
-          <input id="state" type="text" placeholder="State/Country (Abr)" size="20"/><br><br>
-          <div id="prefs">
-            <span>My temperature preference is...</span><br>
-            <button id="left" onclick="setCold();return false">Cold</button>
-            <button id="center" class="selected" onclick="setDef();return false">Default</button>
-            <button id="right" onclick="setWarm();return false">Warm</button>
-          </div><br>
-        <input type="submit" value="Submit" onclick="getLocation(this.form);">
-      </form>
+  <body onload="currentLocation();">
+    
+    <div class="header">
+      <a href="menu.html" style="font-size: medium">MENU</a>
+      <span>BundleUp</span>
+    </div>
+    <div class="break"></div>
+    <div class="details">
+      <div class="maintemp">
+      <span id="temp"></span>&deg; F </div>
+      <div class="otherdetails"><span id="desc"></span></div>
+    </div>
+    <div class="break"></div>
+    <div class="moredetails">
+       <a href="index.html"><h4 id="loc"><span>&nbsp;(Change)</span></h4></a>
+      <h4 id="loc"></h4>
+      <div class="dtitle">Details</div>
+      <div class="extras"> 
+        Precipitation: &nbsp;<span id="precip">% </span></div>
+      <div class="extras"> 
+        High Temp: &nbsp;<span id="high">&deg; F </span></div>
+      <div class="extras">
+        Low Temp: &nbsp;<span id="low">&deg; F </span></div>
+      <img id="weathericon" src="">
+      <div class="extras">
+        Wind: &nbsp;<span id="wind">mph </span></div>
+      <div class="extras" style="margin-bottom: 20px;">
+        Humidity: &nbsp;<span id="humid">% </span></div>
+    </div>
+
+    <div class="alert" id="alert"><span id="alert_cond">Alert: </span></div>
+
+    <div class="break"></div>
+    <div class="breakw">Suggestions</div>
+    <div class="timeDropdown">
+      <span class="dropdown">
+        <a href="index.html" class="dropdown-toggle" data-toggle="dropdown">Change Time<b class="caret"></b></a>
+        <ul class="dropdown-menu" id="time-changer">
+          <li><a href="index.html">The whole day</a></li>
+          <li class="divider"></li>
+          <!--<li class="dropdown-header">Nav header</li>-->
+          <li><a href="testindex.html">Morning</a></li>
+          <li><a href="testindex.html">Noon</a></li>
+          <li><a href="testindex.html">Night</a></li>
+          <!--<li class="divider"></li>
+          <li><a href="testindex.html">Vacation Option</a></li>-->
+          </ul>
+      </span>
+    </div>
+    <div class="break"></div>
+
+
+
+    <div class="sug">
+      <br><br>
+      <!--Cold Options-->
+      <div class="suggestion" id="cold" style="display: none">
+        <ul>
+          <li><img src="images/top/heavy_coat.png"/>
+            <p> Heavy Coat </p></li>
+          <li><img src="images/bottom/pants.png"/>
+            <p> Heavy Pants </p></li>
+          <li><img src="images/accessories/boot.png"/> 
+            <p> Warm Boots </p></li>
+          <li><img src="images/accessories/scarf.png"/> 
+            <p> Scarf </p></li>
+        </ul>
       </div>
+      <!--Mild options-->
+      <div class="suggestion" id="mild" style="display: none">
+        <ul>
+          <li><img class="sugg-img pull-left"src="images/top/hoodie.png"/>
+            <p> Long Sleeves </p></li>
+          <li><img class="sugg-img pull-left"src="images/bottom/pants.png"/>
+            <p> Light Pants </p></li>
+          <li><img class="sugg-img pull-left"src="images/accessories/sneakers.png"/>
+            <p> Light Shoes </p></li>
+        </ul>
+      </div>
+      <!--Warm options-->
+      <div class="suggestion" id="warm" style="display: none">
+        <ul>
+          <li><img class="sugg-img pull-left"src="images/top/short_sleeve.png"/>
+            <p> Short Sleeves </p><br></li>
+          <li><img class="sugg-img pull-left"src="images/bottom/short.png"/>
+            <p> Shorts/Skirt </p></li>
+          <li><img class="sugg-img pull-left"src="images/accessories/sandal.png"/>
+            <p> Sandals </p></li>
+        </ul>
+      </div>
+      <div class="suggestion" id="sunny" style="display: none">
+        <ul>
+          <li><img class="sugg-img pull-left"src="images/accessories/sunglasses.png"/>
+            <p> Sunglasses </p></li>
+        </ul>
+      </div>
+      <div class="suggestion" id="rain" style="display: none">
+        <ul>
+          <li><img class="sugg-img pull-left"src="images/accessories/umbrella.png"/>
+            <p> Umbrella </p></li>
+          <li><img class="sugg-img pull-left"src="images/accessories/rainboots.png"/>
+            <p> Rain Boots </p></li>
+        </ul>
+      </div>
+    </div>
   </body>
 </html>
