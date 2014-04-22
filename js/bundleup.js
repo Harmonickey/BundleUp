@@ -91,15 +91,6 @@ function getLocation(form) {
 	localStorage.setItem("pref", pref);
 }
 
-function currentLocation(){
-	if (navigator.geolocation){
-    	navigator.geolocation.getCurrentPosition(getWeather);
-    }
-  	else{
-    	alert("Geolocation is not supported by this browser.");
-  }
-}
-
 
 function currentLocation(){
 	console.log(localStorage.getItem("city"));
