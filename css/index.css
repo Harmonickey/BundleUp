@@ -59,10 +59,11 @@ a:link, a:visited{
 
 .breakw {
 	background: black;
-	width: 50%;
-	text-align: right;
+	width: 100%;
+	/*text-align: right;*/
+	text-align: center;
 	padding: 20px;
-	border-right: thin solid #B8B8B8;
+	/*border-right: thin solid #B8B8B8;*/
 	font-size: large;
 	color: #666666;
 }
