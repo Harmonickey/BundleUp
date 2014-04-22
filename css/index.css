@@ -41,7 +41,7 @@ a:link, a:visited{
 .header span {
 	font-weight: bold;
 	font-size: large;
-	margin-left: 40%;
+	margin-left: 15%;
 	color: #969696;
 }
 
@@ -65,16 +65,6 @@ a:link, a:visited{
 	border-right: thin solid #B8B8B8;
 	font-size: large;
 	color: #666666;
-}
-.timeDropdown {
-	background: black;
-	width: 50%;
-	text-align: left;
-	padding: 20px;
-	font-size: large;
-	color: #666666;
-	margin-top: -65px;
-	float: right;
 }
 
 .timeDropdown {
@@ -235,12 +225,12 @@ button {
 	font-weight: lighter;
 }
 
-button#temp_left {
+button#left {
 	margin-right: -4px;
 	border-right: thin solid black;
 }
 
-button#temp_right {
+button#right {
 	margin-left: -4px;
 	border-left: thin solid black;
 }
@@ -257,7 +247,7 @@ button.selected {
 }
 
 input[type=submit] {
-	font-size: 35px;
+	font-size: 25px;
 	padding-left: 40px;
 	padding-right: 40px;
 }
@@ -328,7 +318,7 @@ button.center2 {
 }
 
 button.left2 {
-	margin-right: -10px;
+	margin-right: -6px;
 	margin-top: 0;
 }
 
@@ -351,7 +341,7 @@ button.right2 {
 
 @media screen and (min-width: 768px) {
   .header {
-    /*margin-bottom: 30px;*/
+    margin-bottom: 30px;
   }
 }
 
@@ -360,8 +350,7 @@ button.right2 {
   font-size: 21px;
 }
 
-#city_label,
-#state_label {
-	float: left;
-}
+
+
+
 

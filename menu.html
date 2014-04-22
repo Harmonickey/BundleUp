@@ -28,22 +28,19 @@
     </div>
     <div class="break"></div>
     <div class="menu-content">
-      <a onclick="storePrefs(); localStorage.setItem('city', null); localStorage.setItem('state', null);" href="index.html"><div class="menu-option">Current local weather
+      <a onclick="storePrefs(); localStorage.setItem('city', null); localStorage.setItem('state', null)" href="index.html"><div class="menu-option">Current local weather
         <div class="arrow">&#8599;</div>
       </div></a>
-      <a onclick="storePrefs();" href="location.html" ><div class="menu-option">Choose a location
-        <div class="arrow">&#8599;</div>
-      </div></a>
-      <a href="vacation.html" ><div class="menu-option">Vacation Packer
+      <a onclick="return storePrefs();" href="location.html" ><div class="menu-option">Choose a location
         <div class="arrow">&#8599;</div>
       </div></a>
 
       <div class="menu-option2">
         <div class="menu-prefs">
           <span>My temperature preference is...</span><br>
-            <button class="left2" id="temp_left" onclick="setCold();">Cold</button>
-            <button class="center2" id="temp_center" onclick="setDef();">Default</button>
-            <button class="right2" id="temp_right" onclick="setWarm();">Warm</button>
+            <button class="left2" id="left" onclick="setCold();return false">Cold</button>
+            <button class="center2" id="center" onclick="setDef();return false">Default</button>
+            <button class="right2" id="right" onclick="setWarm();return false">Warm</button>
         </div>
       </div>
 
