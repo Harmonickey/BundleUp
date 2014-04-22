@@ -91,7 +91,6 @@ function getLocation(form) {
 	localStorage.setItem("hightemp", hightemp);
 	localStorage.setItem("pref", pref);
 
-<<<<<<< HEAD
 	var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "," + state;
  	console.log(url);
  	$.ajax( {
@@ -118,8 +117,6 @@ function getLocation(form) {
  	});
 }
 
-=======
->>>>>>> 883235d6526355825d6fab626ab7f869541db844
 
 function currentLocation(){
 	console.log(localStorage.getItem("city"));
