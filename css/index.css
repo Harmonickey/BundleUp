@@ -341,7 +341,7 @@ button.right2 {
 
 @media screen and (min-width: 768px) {
   .header {
-    margin-bottom: 30px;
+/*    margin-bottom: 30px; */
   }
 }
 
