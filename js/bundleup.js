@@ -408,7 +408,6 @@ function setrain() {
 	document.getElementById('rain').style.display='block';
 }
 
-<<<<<<< HEAD
 function toggleDetails() {
 	var val = $("#weatherdetails").text();
 	if(val.indexOf("More") > -1) {
@@ -420,12 +419,6 @@ function toggleDetails() {
 
 }
 
-
-
-
-
-=======
 function setSunglasses() {
 	document.getElementById('sunny').style.display='block';
 }
->>>>>>> FETCH_HEAD
