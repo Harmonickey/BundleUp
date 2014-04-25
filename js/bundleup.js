@@ -318,7 +318,8 @@ function setWeather(city,state){
 			}
 			$("#uvi").prepend(uvi);
 
-			feels_t = hourly[0].feelslike;
+			feels_t = hourly[0]['feelslike']['english'];
+			console.log("feels like temp is "+feels_t)
 			$("#feels_t").prepend(feels_t);
 		},
 		error: function() {
