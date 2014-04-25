@@ -281,7 +281,6 @@ function setWeather(city,state){
 						break;
 				}
 			}
-			listsuggestions(ftemp);
 		},
 		error : function(errorData) {
 			alert("Error while getting weather data :: " + errorData.status);
@@ -321,6 +320,8 @@ function setWeather(city,state){
 			feels_t = hourly[0]['feelslike']['english'];
 			console.log("feels like temp is "+feels_t)
 			$("#feels_t").prepend(feels_t);
+			listsuggestions(feels_t);
+			localStorage.setItem("feels_t", feels_t);
 		},
 		error: function() {
 			$("#error").append("Problem with finding hourly.");
@@ -403,6 +404,14 @@ function listsuggestions(temp) {
 	console.log(temp);
 	var condition = findcondition(temp);
 	document.getElementById(condition).style.display='block';
+}
+
+function changesuggestions() {
+	var feels_t = localStorage.getItem("feels_t");
+	document.getElementById("cold").style.display='none';
+	document.getElementById("mild").style.display='none';
+	document.getElementById("warm").style.display='none';
+	listsuggestions(feels_t);
 }
 
 function setrain() {

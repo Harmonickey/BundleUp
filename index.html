@@ -104,9 +104,9 @@
     <div class="menu-option2">
       <div class="menu-prefs" style="margin-top: -10px;">
         <span>i prefer to wear...</span><br>
-          <button class="left2" id="left" onclick="setCold();return false">less clothes</button>
-          <button class="center2" id="center" onclick="setDef();return false">default</button>
-          <button class="right2" id="right" onclick="setWarm();return false">more clothes</button>
+          <button class="left2" id="left" onclick="setCold(); storePrefs(); changesuggestions(); return false">less clothes</button>
+          <button class="center2" id="center" onclick="setDef(); storePrefs(); changesuggestions(); return false">default</button>
+          <button class="right2" id="right" onclick="setWarm(); storePrefs(); changesuggestions(); return false">more clothes</button>
       </div>
     </div>
 
