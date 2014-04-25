@@ -62,7 +62,7 @@ a:link, a:visited{
 	width: 100%;
 	/*text-align: right;*/
 	text-align: center;
-	padding: 20px;
+	padding: 10px;
 	/*border-right: thin solid #B8B8B8;*/
 	font-size: large;
 	color: #666666;
@@ -127,7 +127,7 @@ a:link, a:visited{
 }
 
 .moredetails .extras {
-	width: 55%;
+	width: 100%;
 	text-align: left;
 	color: #B8B8B8;
 	padding: 5px;
@@ -155,12 +155,13 @@ a:link, a:visited{
 	color: #428bca;	
 }
 
-#desc {
-	float:right;
-	margin-right: 5%;
-	margin-top: -50px;
-	color: #666666;
-	font-size: xx-large;
+.descriptor {
+	width: 100%;
+	border: thin solid orange;
+	color: white;
+	text-align: center;
+	font-size: x-large;
+	margin-top: 1px;
 }
 
 .alert {
@@ -170,10 +171,11 @@ a:link, a:visited{
 	font-size: x-large;
 	text-align: center;
 	margin: 0;
+	padding: 0px;
 	border-radius: 0;
 	font-style: italic;
-	padding: 10px;
 	display: none;
+	font-variant: small-caps;
 }
 
 /*====Suggestions====*/
@@ -218,6 +220,7 @@ form span {
 
 #prefs {
 	font-size: medium;
+	font-variant: small-caps;
 }
 
 /*===temperature preference buttons====*/
@@ -286,13 +289,15 @@ input[type=button] {
 	font-variant:small-caps;
 }
 
+/*Needed to prevent white background on click*/
 .menu-option2 {
 	width: 100%;
 	border-bottom: thin solid orange;
 	padding: 20px;
 	color: white;
-	font-size: x-large;
+	font-size: large;
 	font-variant:small-caps;
+	background: #333333;
 }
 
 .menu-option .arrow {
@@ -310,13 +315,13 @@ input[type=button] {
 }
 
 .menu-prefs {
-	font-size: x-large;
+	font-size: large;
 	text-align: center;
 }
 
 .menu-prefs span {
 	color: white;
-	font-size: x-large;
+	font-size: large;
 	text-align: left;
 }
 

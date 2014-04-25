@@ -19,12 +19,12 @@
       <script type="text/javascript" src="js/bundleup.js"></script>
   </head>
 
-  <body onload="currentLocation();">
+  <body onload="currentLocation();setPref()">
     
 
 
     <div class="header">
-      <a href="menu.html" style="font-size: medium">MENU</a>
+      <a onclick="storePrefs();" href="menu.html" style="font-size: medium">MENU</a>
       <span>BundleUp</span>
     </div>
     <div class="break"></div>
@@ -43,11 +43,13 @@
        <a href="location.html"><h4 id="loc"><span>&nbsp;(Change)</span></h4></a>
       <h4 id="loc"></h4>
 
+  <div class="descriptor" id="desc">
+  </div>
 
-  <div class="panel panel-default" style="background:black; border-color: orange">
+  <div class="panel panel-default" style="background:black; border-color: orange; border-top-left-radius: 0; border-top-right-radius: 0">
     <div class="panel-heading" style="background:#333333; border-color: orange">
       <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" style="dtitle">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" style="dtitle" id="weatherdetails" onclick="toggleDetails();">
           More Weather Details
         </a>
       </h4>
@@ -55,25 +57,20 @@
     <div id="collapseOne" class="panel-collapse collapse"> <!--add "in" after "collapse" can show the content-->
       <div class="panel-body">
 
-
       <div class="extras"> 
         Precipitation: &nbsp;<span id="precip">% </span></div>
       <div class="extras"> 
-        High Temp: &nbsp;<span id="high">&deg; F </span></div>
+        High Temperature: &nbsp;<span id="high">&deg; F </span></div>
       <div class="extras">
-        Low Temp: &nbsp;<span id="low">&deg; F </span></div>
-        <!--
-      <img id="weathericon" src="">
-    -->
-      <span id="desc" class="otherdetails"></span>
-
+        Low Temperature: &nbsp;<span id="low">&deg; F </span></div>
       <div class="extras">
-        Wind: &nbsp;<span id="wind">mph </span></div>
-      <div class="extras" style="margin-bottom: 20px;">
+        Feels Like: &nbsp;<span id="feels_t">&deg; F </span></div>
+      <div class="extras">
+        Wind Speed: &nbsp;<span id="wind">mph </span></div>
+      <div class="extras">
         Humidity: &nbsp;<span id="humid">% </span></div>
-
-
-
+      <div class="extras" style="margin-bottom: 20px;">
+        UV Index (0-11): &nbsp;<span id="uvi"> </span></div>
 
       </div>
     </div>
@@ -81,10 +78,11 @@
 
     </div>
 
-    <div class="alert" id="alert"><span id="alert_cond">Alert: </span></div>
+    <div class="alert" id="alert"><span id="alert_cond">alert: </span></div>
 
     <div class="break"></div>
     <div class="breakw">Suggestions</div>
+
 <!--    <div class="timeDropdown">
       <span class="dropdown">
         <!--<a href="index.html" class="dropdown-toggle" data-toggle="dropdown">Change Time<b class="caret"></b></a>
@@ -102,6 +100,15 @@
     </div>-->
 
     <div class="break"></div>
+
+    <div class="menu-option2">
+      <div class="menu-prefs" style="margin-top: -10px;">
+        <span>i prefer to wear...</span><br>
+          <button class="left2" id="left" onclick="setCold();return false">less clothes</button>
+          <button class="center2" id="center" onclick="setDef();return false">default</button>
+          <button class="right2" id="right" onclick="setWarm();return false">more clothes</button>
+      </div>
+    </div>
 
     <div class="sug">
       <br><br>

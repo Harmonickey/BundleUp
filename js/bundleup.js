@@ -212,53 +212,67 @@ function setWeather(city,state){
 			code = data['weather'][0]['id'];
 
 			if ([201, 202, 211, 212, 221, 231, 232].indexOf(code) > -1) {
-				$("#alert_cond").append("Thunderstorms");
+				$("#alert_cond").append("thunderstorms");
 				document.getElementById("alert").style.display='block';
 			}
-			else if([502, 503, 504, 521, 522].indexOf(code) > -1) {
-				$("#alert_cond").append("Heavy Rain");
+			else if([500, 501, 502, 503, 504, 511, 520, 521, 522, 531].indexOf(code) > -1) {
+				$("#alert_cond").append("rain");
 				document.getElementById("alert").style.display='block';
 			}
 			else {
 				switch(code) {
+					case 600:
+					case 601:
 					case 602:
-						$("#alert_cond").append("Heavy Snow");
+						$("#alert_cond").append("snow");
 						document.getElementById("alert").style.display='block';
 						break;
 					case 611:
-						$("#alert_cond").append("Sleet");
+					case 612:
+						$("#alert_cond").append("sleet");
+						document.getElementById("alert").style.display='block';
+						break;
+					case 615:
+					case 616:
+					case 620:
+					case 621:
+					case 622:
+						$("#alert_cond").append("rain and snow");
 						document.getElementById("alert").style.display='block';
 						break;
 					case 741:
-						$("#alert_cond").append("Fog");
+						$("#alert_cond").append("fog");
 						document.getElementById("alert").style.display='block';
 						break;
+					case 781:
 					case 900:
-						$("#alert_cond").append("Tornado");
+						$("#alert_cond").append("tornado");
 						document.getElementById("alert").style.display='block';
 						break;
 					case 901:
-						$("#alert_cond").append("Tropical Storm");
+						$("#alert_cond").append("tropical storm");
 						document.getElementById("alert").style.display='block';
 						break;
 					case 902:
-						$("#alert_cond").append("Hurricane");
+					case 962:
+						$("#alert_cond").append("hurricane");
 						document.getElementById("alert").style.display='block';
 						break;
 					case 903:
-						$("#alert_cond").append("Extreme Cold");
+						$("#alert_cond").append("extreme cold");
 						document.getElementById("alert").style.display='block';
 						break;
 					case 904:
-						$("#alert_cond").append("Extreme Heat");
+						$("#alert_cond").append("extreme heat");
 						document.getElementById("alert").style.display='block';
 						break;
 					case 905:
-						$("#alert_cond").append("High Winds");
+					case 957:
+						$("#alert_cond").append("high winds");
 						document.getElementById("alert").style.display='block';
 						break;
 					case 906:
-						$("#alert_cond").append("Hail");
+						$("#alert_cond").append("hail");
 						document.getElementById("alert").style.display='block';
 						break;
 					default:
@@ -355,4 +369,19 @@ function listsuggestions(temp) {
 function setrain() {
 	document.getElementById('rain').style.display='block';
 }
+
+function toggleDetails() {
+	var val = $("#weatherdetails").text();
+	if(val.indexOf("More") > -1) {
+		$("#weatherdetails").text("Less Weather Details");
+	}
+	else {
+		$("#weatherdetails").text("More Weather Details");
+	}
+
+}
+
+
+
+
 
