@@ -301,6 +301,9 @@ function setWeather(city,state){
 				setSunglasses();
 			}
 			$("#uvi").prepend(uvi);
+
+			feels_t = hourly[0].feelslike;
+			$("#feels_t").prepend(feels_t);
 		},
 		error: function() {
 			$("#error").append("Problem with finding forecast.");
