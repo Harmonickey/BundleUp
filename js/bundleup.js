@@ -272,6 +272,17 @@ function setWeather(city,state){
 		}
 	});
 
+	function getUV(hourly) {
+		var UVmax = 0;
+		var i = 0;
+		for(i=0; i<24; i++) {
+			if(hourly[i].uvi > UVmax) {
+				UVmax = hourly[i].uvi;
+			}
+		}
+		return UVmax;
+	}
+
 	$.ajax( {
 		//5bb4e5428ca66275
 		url : "http://api.wunderground.com/api/871d6fab2c5007d4/hourly/q/" + state + "/"+city+".json",
@@ -283,6 +294,13 @@ function setWeather(city,state){
 				setrain();
 			}
 			$("#precip").prepend(precip);
+
+			uvi = getUV(hourly);
+			console.log(uvi);
+			if (uvi > 5) {
+				setSunglasses();
+			}
+			$("#uvi").prepend(uvi);
 		},
 		error: function() {
 			$("#error").append("Problem with finding forecast.");
@@ -356,3 +374,6 @@ function setrain() {
 	document.getElementById('rain').style.display='block';
 }
 
+function setSunglasses() {
+	document.getElementById('sunny').style.display='block';
+}
