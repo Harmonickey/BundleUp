@@ -194,6 +194,7 @@ function setWeather(city,state){
 
 			humidity = data['main']['humidity'];
 			$("#humid").prepend(humidity);
+			/*
 			high = data['main']['temp_max'];
 			fhigh = (9/5)*(high - 273) + 32;
 			fhigh = fhigh.toFixed(0);
@@ -202,6 +203,7 @@ function setWeather(city,state){
 			flow = (9/5)*(low - 273) + 32;
 			flow = flow.toFixed(0);
 			$("#low").prepend(flow);
+			*/
 
 			icon = data['weather'][0]['icon'];
 			iconurl = "http://openweathermap.org/img/w/" + icon + ".png";
@@ -304,6 +306,21 @@ function setWeather(city,state){
 
 			feels_t = hourly[0].feelslike;
 			$("#feels_t").prepend(feels_t);
+		},
+		error: function() {
+			$("#error").append("Problem with finding hourly.");
+			$("#error").prop("hidden", false);
+		}
+	});
+
+	$.ajax({
+		url: "http://api.wunderground.com/api/871d6fab2c5007d4/forecast/q/" + state + "/"+city+".json",
+		dataType: "jsonp",
+		success: function(parsed_json){			
+			hightemp = parsed_json['forecast']['simpleforecast']['forecastday'][0]['high']['fahrenheit'];
+			$("#high").prepend(hightemp);
+			lowtemp = parsed_json['forecast']['simpleforecast']['forecastday'][0]['low']['fahrenheit'];
+			$("#low").prepend(lowtemp);
 		},
 		error: function() {
 			$("#error").append("Problem with finding forecast.");
