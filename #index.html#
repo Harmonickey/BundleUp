@@ -40,7 +40,7 @@
 
 
     <div class="moredetails">
-       <h4 id="loc"></h4><span><button onclick="changeLocation()">Change Location</button></span>
+       <h4 id="loc"></h4><span><button onclick="()">Change Location</button></span>
       <h4 id="loc"></h4>
 
   <div class="descriptor" id="desc">

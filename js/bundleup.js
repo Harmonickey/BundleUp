@@ -117,6 +117,42 @@ function getLocation(form) {
  	});
 }
 
+
+function getLocation1(city1, state1) {
+	var city = city1;
+	localStorage.setItem("city", city);
+	var state = state1;
+	localStorage.setItem("state", state);
+	localStorage.setItem("lowtemp", lowtemp);
+	localStorage.setItem("hightemp", hightemp);
+	localStorage.setItem("pref", pref);
+
+	var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "," + state;
+ 	console.log(url);
+ 	$.ajax( {
+ 		type: 'POST',
+ 		url: url,
+ 		datatype: 'jsonp',
+ 		async: false,
+ 		success: function(data) {
+ 			if(data['message']) {
+ 					err = 1;
+ 					console.log("Failed location");
+ 					setErrors(err);
+ 					loadErrors();
+ 					localStorage.setItem("city", null);
+ 					localStorage.setItem("state", null);
+ 			}
+ 			else {
+ 					err = 0;
+ 					console.log("Success location");
+ 					setErrors(err);
+ 					document.location = "index.html";
+ 			}
+ 		}
+ 	});
+}
+
 function currentLocation(){
 	console.log(localStorage.getItem("city"));
 	if (localStorage.getItem("city") === null || localStorage.getItem("city") === "null") {
@@ -431,4 +467,18 @@ function toggleDetails() {
 
 function setSunglasses() {
 	document.getElementById('sunny').style.display='block';
+}
+
+function changeLocation()
+{
+	var x;
+
+	var location=prompt("Please enter your location","Evanston, IL");
+	if (location!=null)
+  	{
+  		x=location;
+		token = x.split(",")
+  		document.getElementById("loc").innerHTML=x;
+		getLocation1(token[0], token[1]);
+  	}
 }
