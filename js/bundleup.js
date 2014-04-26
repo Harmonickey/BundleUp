@@ -471,14 +471,16 @@ function setSunglasses() {
 
 function changeLocation()
 {
-	var x;
+	$("#loc").val($("#new_city").val() + "," + $("#new_state").val());
+	getLocation1($("#new_city").val(), $("#new_state").val());
+}
 
-	var location=prompt("Please enter your location","Evanston, IL");
-	if (location!=null)
-  	{
-  		x=location;
-		token = x.split(",")
-  		document.getElementById("loc").innerHTML=x;
-		getLocation1(token[0], token[1]);
-  	}
+function createlightboxlogin() {
+	document.getElementById('lightlogin').style.display='block';
+	document.getElementById('fade').style.display='block';
+}
+
+function closelightbox() {
+	document.getElementById('fade').style.display='none';
+	document.getElementById('lightlogin').style.display='none';
 }

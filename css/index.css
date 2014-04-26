@@ -362,6 +362,38 @@ button.right2 {
   font-size: 21px;
 }
 
+.popuplogincontent {
+	display: none;
+	position: absolute;
+	top: 25%;
+	left: 25%;
+	width: 450px;
+	height: 325px;
+	padding: 25px;
+	box-shadow: inset 0 0 4px 4px #999;
+	background-color: white;
+	z-index: 1002;
+	overflow: auto;
+	border-radius: 15px;
+	margin-left: 8%;
+}
+
+.overlay {
+	display: none;
+	position: fixed;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	height: 100%;
+	background-color: black;
+	z-index: 1001;
+	opacity: .8;
+}
+
+#lightlogin input {
+	margin-top: 30px;	
+}
+
 
 
 

@@ -21,7 +21,26 @@
 
   <body onload="currentLocation();setPref()">
     
-
+        <div id="lightlogin" class="popuplogincontent">
+        <!--button for closing the window-->
+        <a href="javascript:void(0)" onclick = "closelightbox()" style="float:right">
+                    <img src="images/close.png" alt=""/></a>
+        <!--contents of window-->
+        <div style="float: left;">
+        <label for"new_state">City</label>
+        <input type="text" id="new_city" value="Evanston">
+        </div>
+        <div style="float: left;">
+        <label for"new_state">State/Country</label>
+        <input type="text" id="new_state" value="IL">
+        </div>
+        <div>
+        <input type="button" onclick="changeLocation()" value="Submit">
+        </div>
+        </div>
+        
+        <!--at bottom, before </body> -->
+        <div id="fade" class="overlay"></div>
 
     <div class="header">
       <a onclick="storePrefs();" href="menu.html" style="font-size: medium">MENU</a>
@@ -45,7 +64,7 @@
 
 
     <div class="moredetails">
-       <h4 id="loc"></h4><span><button onclick="changeLocation()">Change Location</button></span>
+       <h4 id="loc"></h4><span><button onclick="createlightboxlogin()">Change Location</button></span>
       <h4 id="loc"></h4>
 
   
