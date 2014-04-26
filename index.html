@@ -35,7 +35,7 @@
         <input type="text" id="new_state" value="IL">
         </div>
         <div>
-        <input type="button" onclick="changeLocation()" value="Submit">
+        <input type="button" onclick="closelightbox(); changeLocation();" value="Submit">
         </div>
         </div>
         
@@ -43,7 +43,6 @@
         <div id="fade" class="overlay"></div>
 
     <div class="header">
-      <a onclick="storePrefs();" href="menu.html" style="font-size: medium">MENU</a>
       <span>BundleUp</span>
     </div>
     <div class="break"></div>
@@ -64,10 +63,10 @@
 
 
     <div class="moredetails">
-       <h4 id="loc"></h4><span><button onclick="createlightboxlogin()">Change Location</button></span>
-      <h4 id="loc"></h4>
-
-  
+       <h4 id="loc"></h4>
+       <div style="width: 100%">
+		  <div id="changer" ><input type="button" onclick="createlightboxlogin()" value="Change Location" /></div>
+  	   </div>
   <div class="panel panel-default" style="background:black; border-color: orange; border-top-left-radius: 0; border-top-right-radius: 0; margin-bottom: 0">
     <div class="panel-heading" style="background:#333333; border-color: orange">
       <h4 class="panel-title">
