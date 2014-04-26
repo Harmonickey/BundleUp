@@ -157,9 +157,9 @@ a:link, a:visited{
 
 .descriptor {
 	width: 100%;
-	border: thin solid orange;
+	/*border: thin solid orange;*/
 	color: white;
-	text-align: center;
+	text-align: left;
 	font-size: x-large;
 	margin-top: 1px;
 }
