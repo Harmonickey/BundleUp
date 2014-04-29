@@ -331,16 +331,19 @@ input[type=button] {
 
 button.center2 {
 	margin-top: 0;
+	border-radius: 5px;
 }
 
 button.left2 {
 	margin-right: -6px;
 	margin-top: 0;
+	border-radius: 5px;
 }
 
 button.right2 {
 	margin-left: -10px;
 	margin-top: 0;
+	border-radius: 5px;
 }
 
 
