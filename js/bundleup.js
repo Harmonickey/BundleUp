@@ -138,7 +138,8 @@ function getLocation1(city1, state1) {
  			if(data['response']['results']) {
  					err = 1;
  					console.log("Failed location");
- 					createlightboxlogin();
+ 					setErrors(err)
+ 					loadErrors()
  					localStorage.setItem("city", null);
  					localStorage.setItem("state", null);
 					ret_val = false;
@@ -147,6 +148,7 @@ function getLocation1(city1, state1) {
  					err = 0;
  					console.log("Success location");
  					setErrors(err);
+
  					document.location = "index.html";
 					ret_val = true;
  			}
