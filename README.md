@@ -11,3 +11,5 @@ Tools:
 
 
 This is yuetong changes.
+
+Kevin's Icon To-do list: finish umbrella, long coat, and sunglasses icons
