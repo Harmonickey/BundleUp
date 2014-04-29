@@ -457,10 +457,10 @@ function setrain() {
 function toggleDetails() {
 	var val = $("#weatherdetails").text();
 	if(val.indexOf("More") > -1) {
-		$("#weatherdetails").text("Less Weather Details");
+		$("#weatherdetails h4").text("Less Weather Details");
 	}
 	else {
-		$("#weatherdetails").text("More Weather Details");
+		$("#weatherdetails h4").text("More Weather Details");
 	}
 
 }
