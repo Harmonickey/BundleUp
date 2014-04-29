@@ -377,11 +377,10 @@ function setWeather(city,state){
 				setrain();
 			}
 			$("#precip").html(precip + "%");
-
 			uvi = getUV(hourly);
 			console.log(uvi);
 			if (uvi > 5) {
-				setSunglasses();
+				checkSun(city, state);
 			}
 			$("#uvi").html(uvi);
 
@@ -498,6 +497,40 @@ function toggleDetails() {
 
 function setSunglasses() {
 	document.getElementById('sunny').style.display='block';
+}
+
+function checkSun(city, state) {
+	//var d = new Date();
+	//var chour = d.getHours();
+	//var cmin = d.getMinutes();
+	
+	$.ajax({
+		url:"http://api.wunderground.com/api/5bb4e5428ca66275/astronomy/q/"
+		+state+"/"+city+".json",
+		dataType:"jsonp",
+		success: function(parsed_json) {
+			var chour = parseInt(parsed_json["moon_phase"]["current_time"]["hour"]);
+			var cmin = parseInt(parsed_json["moon_phase"]["current_time"]["minute"]);
+			var sunrise_hour = parseInt(parsed_json["moon_phase"]["sunrise"]["hour"]);
+			var sunrise_minute = parseInt(parsed_json["moon_phase"]["sunrise"]["minute"]);
+			var sunset_hour = parseInt(parsed_json["moon_phase"]["sunset"]["hour"]);
+			var sunset_minute = parseInt(parsed_json["moon_phase"]["sunset"]["minute"]);
+
+			if ((chour==sunrise_hour) && (cmin>sunrise_minute)) {
+				setSunglasses();
+			}
+			else if ((chour==sunset_hour) && (cmin<sunset_minute)) {
+				setSunglasses();
+			}
+			else if ((chour>sunrise_hour) && (chour<sunset_hour)) {
+				setSunglasses();
+			}
+		},
+		error: function() {
+			$("#error").html("Problem with finding sunrise/sunset.");
+			$("#error").prop("hidden", false);
+		}
+	});
 }
 
 function changeLocation()
