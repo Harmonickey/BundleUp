@@ -7,6 +7,9 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
       <meta name="description" content="homepage">    
       <link rel="apple-touch-icon" href="short_sleeve.png">
+      <meta name="mobile-web-app-capable" content="yes">
+      <link rel="icon" sizes="196x196" href="short_sleeve.png">
+      <link rel="shortcut icon" sizes="196x196" href="short_sleeve.png">
       <meta name="author" content="Kevin Chen">
       <title> BundleUp </title>
 
@@ -29,7 +32,7 @@
             <!--contents of window-->
             <div>
               <label for"new_state">City</label><br>
-              <input type="text" autofocus="autofocus" style="margin-top:0" id="new_city" value="Evanston">
+              <input type="text" autofocus style="margin-top:0" id="new_city" value="Evanston">
             </div></br>
             <div>
               <label for"new_state">State/Country</label><br>
@@ -200,5 +203,17 @@
         </ul>
       </div>
     </div>
+    <div id="TileOverlay" onclick="ToggleTileOverlay()" style='background-color: Highlight; height: 100%; width: 100%; top: 0px; left: 0px; position: fixed; color: black; visibility: hidden'> 
+    	<img src="short_sleeve.png" width="320" height="320" /> 
+    	<div style='margin-top: 40px'> 
+    	Pin to start menu? 
+    	</div> 
+    </div>
+    <script type="text/javascript"> 
+		function ToggleTileOverlay() { 
+		var newVisibility = (document.getElementById('TileOverlay').style.visibility == 'visible') ? 'hidden' : 'visible'; 
+			document.getElementById('TileOverlay').style.visibility = newVisibility; 
+		} 
+	</script>
   </body>
 </html>
