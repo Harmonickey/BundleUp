@@ -135,7 +135,7 @@ function getLocation1(city1, state1) {
  		dataType: 'jsonp',
  		async: false,
  		success: function(data) {
- 			if(data['response']['results']) {
+ 			if(data['response']['results'] || data['response']['error']) {
  					err = 1;
  					console.log("Failed location");
  					setErrors(err)
@@ -182,7 +182,6 @@ function getSavedLocation() {
 }
 
 function getWeather(position, city, state) {
-	
 	var city = city;
 	var state = state;
 	console.log(position)
