@@ -366,9 +366,9 @@ button.right2 {
 	display: none;
 	position: absolute;
 	top: 25%;
-	left: 25%;
-	width: 450px;
-	height: 325px;
+	left: 10%;
+	width: 70%;
+	height: 60%;
 	padding: 25px;
 	box-shadow: inset 0 0 4px 4px #999;
 	background-color: white;
