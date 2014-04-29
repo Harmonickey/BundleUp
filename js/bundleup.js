@@ -101,7 +101,6 @@ function getLocation(form) {
  		success: function(data) {
  			if(data['message']) {
  					err = 1;
- 					alert("Error: Location unknown");
  					setErrors(err);
  					loadErrors();
  					localStorage.setItem("city", null);
@@ -139,7 +138,6 @@ function getLocation1(city1, state1) {
  			if(data['response']['results']) {
  					err = 1;
  					console.log("Failed location");
- 					alert("Error: Invalid location");
  					createlightboxlogin();
  					localStorage.setItem("city", null);
  					localStorage.setItem("state", null);
