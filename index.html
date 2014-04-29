@@ -27,21 +27,21 @@
                         <img src="images/close.png" alt=""/></a>
             <!--contents of window-->
             <div>
-              <label for"new_state">City</label>
-              <input type="text" id="new_city" value="Evanston">
+              <label for"new_state">City</label><br>
+              <input type="text" autofocus="autofocus" style="margin-top:0" id="new_city" value="Evanston">
             </div></br>
             <div>
-              <label for"new_state">State/Country</label>
-              <input type="text" id="new_state" value="IL">
+              <label for"new_state">State/Country</label><br>
+              <input type="text" id="new_state" style="margin-top:0" value="IL">
             </div>
             <div>
-              <input type="button" onclick="var okay = changeLocation(); if (okay) { closelightbox(); } " value="Submit">
+              <input type="button" onclick="var okay = changeLocation(); if (okay) { closelightbox(); } " value="Submit" style="font-size: large">
             </div>
             <div>
-            	<input type="button" onclick="currentLocation(); closelightbox();" value="Current Location">
+              <input type="button" onclick="currentLocation(); closelightbox();" value="Current Location" style="font-size: large">
             </div>
             <div>
-            	<label id="loc_error" style="display: none;">That location doesn't exist in our database.</label>
+              <label id="loc_error" style="display: none;">That location doesn't exist in our database.</label>
             </div>
         </div>
         
