@@ -19,24 +19,30 @@
       <script type="text/javascript" src="js/bundleup.js"></script>
   </head>
 
-  <body onload="currentLocation();setPref()">
+  <body onload="getSavedLocation();setPref()">
     
         <div id="lightlogin" class="popuplogincontent">
-        <!--button for closing the window-->
-        <a href="javascript:void(0)" onclick = "closelightbox()" style="float:right">
-                    <img src="images/close.png" alt=""/></a>
-        <!--contents of window-->
-        <div>
-          <label for"new_state">City</label>
-          <input type="text" id="new_city" value="Evanston">
-        </div></br>
-        <div>
-          <label for"new_state">State/Country</label>
-          <input type="text" id="new_state" value="IL">
-        </div>
-        <div>
-          <input type="button" onclick="closelightbox(); changeLocation();" value="Submit">
-        </div>
+            <!--button for closing the window-->
+            <a href="javascript:void(0)" onclick = "closelightbox()" style="float:right">
+                        <img src="images/close.png" alt=""/></a>
+            <!--contents of window-->
+            <div>
+              <label for"new_state">City</label>
+              <input type="text" id="new_city" value="Evanston">
+            </div></br>
+            <div>
+              <label for"new_state">State/Country</label>
+              <input type="text" id="new_state" value="IL">
+            </div>
+            <div>
+              <input type="button" onclick="var okay = changeLocation(); if (okay) { closelightbox(); } " value="Submit">
+            </div>
+            <div>
+            	<input type="button" onclick="currentLocation(); closelightbox();" value="Current Location">
+            </div>
+            <div>
+            	<label id="loc_error" style="display: none;">That location doesn't exist in our database.</label>
+            </div>
         </div>
         
         <!--at bottom, before </body> -->
@@ -48,7 +54,7 @@
     <div class="break"></div>
     <div class="details">
       <div class="maintemp">
-      <span id="temp"></span>&deg; F </div>
+      <span id="temp"></span> </div>
       <!--
       <div class="otherdetails"><span id="desc"></span></div>
     -->
@@ -79,17 +85,17 @@
       <div class="panel-body">
 
       <div class="extras"> 
-        Precipitation: &nbsp;<span id="precip">% </span></div>
+        Precipitation: &nbsp;<span id="precip"> </span></div>
       <div class="extras"> 
-        High Temperature: &nbsp;<span id="high">&deg; F </span></div>
+        High Temperature: &nbsp;<span id="high"> </span></div>
       <div class="extras">
-        Low Temperature: &nbsp;<span id="low">&deg; F </span></div>
+        Low Temperature: &nbsp;<span id="low"> </span></div>
       <div class="extras">
-        Feels Like: &nbsp;<span id="feels_t">&deg; F </span></div>
+        Feels Like: &nbsp;<span id="feels_t"> </span></div>
       <div class="extras">
-        Wind Speed: &nbsp;<span id="wind">mph </span></div>
+        Wind Speed: &nbsp;<span id="wind"> </span></div>
       <div class="extras">
-        Humidity: &nbsp;<span id="humid">% </span></div>
+        Humidity: &nbsp;<span id="humid"> </span></div>
       <div class="extras" style="margin-bottom: 20px;">
         UV Index (0-11): &nbsp;<span id="uvi"> </span></div>
 
