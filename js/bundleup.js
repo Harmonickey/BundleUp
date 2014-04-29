@@ -209,6 +209,11 @@ function setWeather(city,state){
 	var city = localStorage.getItem("city");
 	var state = localStorage.getItem("state");
 	*/
+			document.getElementById("cold").style.display='none';
+			document.getElementById("mild").style.display='none';
+			document.getElementById("warm").style.display='none';
+			document.getElementById("rain").style.display='none';
+			document.getElementById("sunny").style.display='none';
 
 	$("#loc").html(city + ', ' + state);
 	var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "," + state;
@@ -519,4 +524,3 @@ $(document).keypress(function(event) {
 
 	}
 })
-
