@@ -225,6 +225,7 @@ form span {
 
 /*===temperature preference buttons====*/
 button {
+	width: 30%;
 	background: -webkit-linear-gradient(#858585, #333333); /* For Safari 5.1 to 6.0 */
 	background: -o-linear-gradient(#858585, #333333); /* For Opera 11.1 to 12.0 */
 	background: -moz-linear-gradient(#858585, #333333); /* For Firefox 3.6 to 15 */
@@ -330,16 +331,19 @@ input[type=button] {
 
 button.center2 {
 	margin-top: 0;
+	border-radius: 5px;
 }
 
 button.left2 {
 	margin-right: -6px;
 	margin-top: 0;
+	border-radius: 5px;
 }
 
 button.right2 {
 	margin-left: -10px;
 	margin-top: 0;
+	border-radius: 5px;
 }
 
 
