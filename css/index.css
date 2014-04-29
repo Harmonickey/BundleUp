@@ -236,16 +236,51 @@ button {
 	font-weight: lighter;
 }
 
-button#left {
+button#left, {
 	width: 30%;
-	margin-right: -4px;
 	border-right: thin solid black;
 }
 
-button#right {
+button#center {
+	margin: 5px;	
+}
+
+button#right {	
 	width: 30%;
-	margin-left: -4px;
-	border-left: thin solid black;
+	border-right: thin solid black;
+}
+
+button#left.selected {
+	background: rgba(179,220,237,1);
+	background: -moz-linear-gradient(left, rgba(179,220,237,1) 0%, rgba(41,184,229,1) 50%, rgba(188,224,238,1) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(179,220,237,1)), color-stop(50%, rgba(41,184,229,1)), color-stop(100%, rgba(188,224,238,1)));
+	background: -webkit-linear-gradient(left, rgba(179,220,237,1) 0%, rgba(41,184,229,1) 50%, rgba(188,224,238,1) 100%);
+	background: -o-linear-gradient(left, rgba(179,220,237,1) 0%, rgba(41,184,229,1) 50%, rgba(188,224,238,1) 100%);
+	background: -ms-linear-gradient(left, rgba(179,220,237,1) 0%, rgba(41,184,229,1) 50%, rgba(188,224,238,1) 100%);
+	background: linear-gradient(to right, rgba(179,220,237,1) 0%, rgba(41,184,229,1) 50%, rgba(188,224,238,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3dced', endColorstr='#bce0ee', GradientType=1 );
+}
+
+button#right.selected {
+	background: rgba(255,175,75,1);
+	background: -moz-linear-gradient(left, rgba(255,175,75,1) 0%, rgba(255,146,10,1) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,175,75,1)), color-stop(100%, rgba(255,146,10,1)));
+	background: -webkit-linear-gradient(left, rgba(255,175,75,1) 0%, rgba(255,146,10,1) 100%);
+	background: -o-linear-gradient(left, rgba(255,175,75,1) 0%, rgba(255,146,10,1) 100%);
+	background: -ms-linear-gradient(left, rgba(255,175,75,1) 0%, rgba(255,146,10,1) 100%);
+	background: linear-gradient(to right, rgba(255,175,75,1) 0%, rgba(255,146,10,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffaf4b', endColorstr='#ff920a', GradientType=1 );
+}
+
+button#center.selected {
+	background: rgba(210,255,82,1);
+	background: -moz-linear-gradient(left, rgba(210,255,82,1) 0%, rgba(145,232,66,1) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(210,255,82,1)), color-stop(100%, rgba(145,232,66,1)));
+	background: -webkit-linear-gradient(left, rgba(210,255,82,1) 0%, rgba(145,232,66,1) 100%);
+	background: -o-linear-gradient(left, rgba(210,255,82,1) 0%, rgba(145,232,66,1) 100%);
+	background: -ms-linear-gradient(left, rgba(210,255,82,1) 0%, rgba(145,232,66,1) 100%);
+	background: linear-gradient(to right, rgba(210,255,82,1) 0%, rgba(145,232,66,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2ff52', endColorstr='#91e842', GradientType=1 );	
 }
 
 button.selected {
@@ -258,6 +293,8 @@ button.selected {
 	-moz-box-shadow:    inset 0 0 8px #000000;
    	-webkit-box-shadow: inset 0 0 8px #000000;
    	box-shadow:         inset 0 0 8px #000000;
+	color: black;
+	
 }
 
 input[type=button] {
@@ -335,13 +372,11 @@ button.center2 {
 }
 
 button.left2 {
-	margin-right: -6px;
 	margin-top: 0;
 	border-radius: 5px;
 }
 
 button.right2 {
-	margin-left: -10px;
 	margin-top: 0;
 	border-radius: 5px;
 }

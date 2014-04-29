@@ -127,7 +127,7 @@ function getLocation1(city1, state1) {
 	localStorage.setItem("hightemp", hightemp);
 	localStorage.setItem("pref", pref);
 
-	var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "," + state;
+	var url = "http://api.wunderground.com/api/871d6fab2c5007d4/hourly/q/" + state + "/"+city+".json";
  	console.log(url);
  	var ret_val;
 	$.ajax( {
@@ -154,7 +154,6 @@ function getLocation1(city1, state1) {
  			}
  		}
  	});
-	console.log("Return value: " + ret_val);
 	return ret_val;
 }
 
