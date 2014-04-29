@@ -191,7 +191,7 @@ a:link, a:visited{
 }
 
 .suggestion p {
-	margin-top: 40px;
+	margin-top: 30px;
 	font-size: large;
 	background: #333333;
 	color: white;
@@ -200,7 +200,7 @@ a:link, a:visited{
 .suggestion img {
 	width: 40%;
 	float: left;
-	margin-bottom: 50px;
+	margin-bottom: 20px;
 	background: #333333;
 }
 
