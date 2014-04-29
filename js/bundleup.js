@@ -155,7 +155,6 @@ function getLocation1(city1, state1) {
  		},
  		error: function(err) {
  			console.log(JSON.stringify(err))
- 			console.log("hahahah")
  		}
  	});
 	return ret_val;
