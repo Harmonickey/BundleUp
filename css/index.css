@@ -333,6 +333,7 @@ input[type=button] {
 /*Needed to prevent white background on click*/
 .menu-option2 {
 	width: 100%;
+	border-top: thin solid orange;
 	border-bottom: thin solid orange;
 	padding: 20px;
 	color: white;
