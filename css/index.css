@@ -160,7 +160,7 @@ a:link, a:visited{
 	/*border: thin solid orange;*/
 	color: white;
 	text-align: left;
-	font-size: x-large;
+	font-size: large;
 	margin-top: 1px;
 }
 
@@ -261,9 +261,9 @@ button.selected {
 }
 
 input[type=button] {
-	font-size: 25px;
-	padding-left: 40px;
-	padding-right: 40px;
+	font-size: 15px;
+	padding-left: 20px;
+	padding-right: 20px;
 }
 
 .error {
