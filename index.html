@@ -34,11 +34,11 @@
               <label for"new_state">State/Country</label>
               <input type="text" id="new_state" value="IL">
             </div>
-            <div>
-              <input type="button" onclick="var okay = changeLocation(); if (okay) { closelightbox(); } " value="Submit">
+            <div id="changer">
+              <button onclick="var okay = changeLocation(); if (okay) { closelightbox(); } ">Submit</button>
             </div>
-            <div>
-            	<input type="button" onclick="currentLocation(); closelightbox();" value="Current Location">
+            <div id="changer">
+            	<button onclick="currentLocation(); closelightbox();">Current Location</button>
             </div>
             <div>
             	<label id="loc_error" style="display: none;">That location doesn't exist in our database.</label>
