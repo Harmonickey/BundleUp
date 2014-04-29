@@ -101,7 +101,7 @@ function getLocation(form) {
  		success: function(data) {
  			if(data['message']) {
  					err = 1;
- 					console.log("Failed location");
+ 					alert("Error: Location unknown");
  					setErrors(err);
  					loadErrors();
  					localStorage.setItem("city", null);
@@ -139,8 +139,8 @@ function getLocation1(city1, state1) {
  			if(data['response']['results']) {
  					err = 1;
  					console.log("Failed location");
- 					setErrors(err);
- 					loadErrors();
+ 					alert("Error: Invalid location");
+ 					createlightboxlogin();
  					localStorage.setItem("city", null);
  					localStorage.setItem("state", null);
 					ret_val = false;
@@ -223,8 +223,6 @@ function setWeather(city,state){
 			if(data['message']) {
 				err = 1;
 				console.log("Failed location");
-				setErrors(err);
-				document.location = "location.html";
 				localStorage.setItem("city", null);
 				localStorage.setItem("state", null);
 			}
@@ -261,6 +259,20 @@ function setWeather(city,state){
 			$("#weathericon").attr("src", iconurl);
 			desc = data['weather'][0]['main'];
 			$("#desc").html(desc);
+			switch(desc) {
+				case "sky is clear":
+				case "few clouds":
+				case "shower rain":
+					document.getElementById('desc').style.fontSize = "large";
+					break;
+				case "scattered clouds":
+				case "broken clouds":
+				case "Thunderstorm":
+					document.getElementById('desc').style.fontSize = "medium";
+					break;
+				default:
+					break;
+			}
 
 			code = data['weather'][0]['id'];
 
@@ -477,7 +489,6 @@ function toggleDetails() {
 	else {
 		$("#weatherdetails h4").html("More Weather Details");
 	}
-
 }
 
 function setSunglasses() {
@@ -499,3 +510,13 @@ function closelightbox() {
 	document.getElementById('fade').style.display='none';
 	document.getElementById('lightlogin').style.display='none';
 }
+
+$(document).keypress(function(event) {
+	if (event.keyCode == 13) {
+		event.preventDefault();
+		closelightbox();
+		changeLocation();
+
+	}
+})
+
