@@ -127,16 +127,16 @@ function getLocation1(city1, state1) {
 	localStorage.setItem("hightemp", hightemp);
 	localStorage.setItem("pref", pref);
 
-	var url = "http://api.wunderground.com/api/871d6fab2c5007d4/hourly/q/" + state + "/"+city+".json";
+	var url = "https://api.wunderground.com/api/871d6fab2c5007d4/geolookup/q/" + state + "/"+city+".json";
  	console.log(url);
  	var ret_val;
 	$.ajax( {
- 		type: 'POST',
+		type : 'POST',
  		url: url,
- 		datatype: 'jsonp',
+ 		dataType: 'jsonp',
  		async: false,
  		success: function(data) {
- 			if(data['message']) {
+ 			if(data['response']['results']) {
  					err = 1;
  					console.log("Failed location");
  					setErrors(err);
@@ -152,6 +152,10 @@ function getLocation1(city1, state1) {
  					document.location = "index.html";
 					ret_val = true;
  			}
+ 		},
+ 		error: function(err) {
+ 			console.log(JSON.stringify(err))
+ 			console.log("hahahah")
  		}
  	});
 	return ret_val;
