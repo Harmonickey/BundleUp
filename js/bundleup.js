@@ -228,6 +228,8 @@ function setWeather(city,state){
 				err = 0;
 				console.log("Success location");
 				setErrors(err);
+				localStorage.setItem("city",city)
+				localStorage.setItem("state",state)
 			}
 			temp = data['main']['temp'];
 			ftemp = (9/5)*(temp - 273) + 32;
