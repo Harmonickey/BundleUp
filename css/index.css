@@ -411,7 +411,7 @@ button.right2 {
 	top: 15%;
 	left: 10%;
 	width: 70%;
-	height: 70%;
+	height: auto;
 	padding: 25px;
 	box-shadow: inset 0 0 4px 4px #999;
 	background-color: white;
