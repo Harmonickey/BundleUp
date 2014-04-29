@@ -76,7 +76,7 @@ function loadErrors() {
 	console.log("Error retrieved: " + err);
 	if(err==1) {
 		console.log("Error: " + err);
-		document.getElementById("error").style.display='block';
+		document.getElementById("loc_error").style.display='block';
 		localStorage.setItem("err", 0);
 	}
 }
@@ -129,7 +129,8 @@ function getLocation1(city1, state1) {
 
 	var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "," + state;
  	console.log(url);
- 	$.ajax( {
+ 	var ret_val;
+	$.ajax( {
  		type: 'POST',
  		url: url,
  		datatype: 'jsonp',
@@ -142,26 +143,37 @@ function getLocation1(city1, state1) {
  					loadErrors();
  					localStorage.setItem("city", null);
  					localStorage.setItem("state", null);
+					ret_val = false;
  			}
  			else {
  					err = 0;
  					console.log("Success location");
  					setErrors(err);
  					document.location = "index.html";
+					ret_val = true;
  			}
  		}
  	});
+	console.log("Return value: " + ret_val);
+	return ret_val;
 }
 
-function currentLocation(){
+function currentLocation()
+{
+	if (navigator.geolocation)
+	{
+		navigator.geolocation.getCurrentPosition(getWeather);
+	}
+	else
+	{
+		alert("Geolocation is not supported by this browser.");
+	}
+}
+
+function getSavedLocation() {
 	console.log(localStorage.getItem("city"));
 	if (localStorage.getItem("city") === null || localStorage.getItem("city") === "null") {
-		if (navigator.geolocation){
-			navigator.geolocation.getCurrentPosition(getWeather);
-		}
-		else{
-			alert("Geolocation is not supported by this browser.");
-	    }
+		currentLocation();
 	} else {
 		getWeather(null, localStorage.getItem("city"), localStorage.getItem("state"));	
 	}
@@ -197,7 +209,7 @@ function setWeather(city,state){
 	var state = localStorage.getItem("state");
 	*/
 
-	$("#loc").prepend(city + ', ' + state);
+	$("#loc").html(city + ', ' + state);
 	var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "," + state;
 	console.log(url);
 	$.ajax( {
@@ -221,40 +233,40 @@ function setWeather(city,state){
 			temp = data['main']['temp'];
 			ftemp = (9/5)*(temp - 273) + 32;
 			ftemp = ftemp.toFixed(0);
-			$("#temp").append(ftemp);
+			$("#temp").html(ftemp + " &deg;F");
 
 			wind = data['wind']['speed'];
-			$("#wind").prepend(wind);
+			$("#wind").html(wind + " mph");
 			gusts = data['wind']['gust'];
-			$("#gusts").prepend(gusts);
+			$("#gusts").html(gusts + " mph");
 
 			humidity = data['main']['humidity'];
-			$("#humid").prepend(humidity);
+			$("#humid").html(humidity + "%");
 			/*
 			high = data['main']['temp_max'];
 			fhigh = (9/5)*(high - 273) + 32;
 			fhigh = fhigh.toFixed(0);
-			$("#high").prepend(fhigh);
+			$("#high").html(fhigh);
 			low = data['main']['temp_min'];
 			flow = (9/5)*(low - 273) + 32;
 			flow = flow.toFixed(0);
-			$("#low").prepend(flow);
+			$("#low").html(flow);
 			*/
 
 			icon = data['weather'][0]['icon'];
 			iconurl = "http://openweathermap.org/img/w/" + icon + ".png";
 			$("#weathericon").attr("src", iconurl);
 			desc = data['weather'][0]['main'];
-			$("#desc").append(desc);
+			$("#desc").html(desc);
 
 			code = data['weather'][0]['id'];
 
 			if ([201, 202, 211, 212, 221, 231, 232].indexOf(code) > -1) {
-				$("#alert_cond").append("thunderstorms");
+				$("#alert_cond").html("thunderstorms");
 				document.getElementById("alert").style.display='block';
 			}
 			else if([500, 501, 502, 503, 504, 511, 520, 521, 522, 531].indexOf(code) > -1) {
-				$("#alert_cond").append("rain");
+				$("#alert_cond").html("rain");
 				document.getElementById("alert").style.display='block';
 			}
 			else {
@@ -262,12 +274,12 @@ function setWeather(city,state){
 					case 600:
 					case 601:
 					case 602:
-						$("#alert_cond").append("snow");
+						$("#alert_cond").html("snow");
 						document.getElementById("alert").style.display='block';
 						break;
 					case 611:
 					case 612:
-						$("#alert_cond").append("sleet");
+						$("#alert_cond").html("sleet");
 						document.getElementById("alert").style.display='block';
 						break;
 					case 615:
@@ -275,42 +287,42 @@ function setWeather(city,state){
 					case 620:
 					case 621:
 					case 622:
-						$("#alert_cond").append("rain and snow");
+						$("#alert_cond").html("rain and snow");
 						document.getElementById("alert").style.display='block';
 						break;
 					case 741:
-						$("#alert_cond").append("fog");
+						$("#alert_cond").html("fog");
 						document.getElementById("alert").style.display='block';
 						break;
 					case 781:
 					case 900:
-						$("#alert_cond").append("tornado");
+						$("#alert_cond").html("tornado");
 						document.getElementById("alert").style.display='block';
 						break;
 					case 901:
-						$("#alert_cond").append("tropical storm");
+						$("#alert_cond").html("tropical storm");
 						document.getElementById("alert").style.display='block';
 						break;
 					case 902:
 					case 962:
-						$("#alert_cond").append("hurricane");
+						$("#alert_cond").html("hurricane");
 						document.getElementById("alert").style.display='block';
 						break;
 					case 903:
-						$("#alert_cond").append("extreme cold");
+						$("#alert_cond").html("extreme cold");
 						document.getElementById("alert").style.display='block';
 						break;
 					case 904:
-						$("#alert_cond").append("extreme heat");
+						$("#alert_cond").html("extreme heat");
 						document.getElementById("alert").style.display='block';
 						break;
 					case 905:
 					case 957:
-						$("#alert_cond").append("high winds");
+						$("#alert_cond").html("high winds");
 						document.getElementById("alert").style.display='block';
 						break;
 					case 906:
-						$("#alert_cond").append("hail");
+						$("#alert_cond").html("hail");
 						document.getElementById("alert").style.display='block';
 						break;
 					default:
@@ -344,23 +356,23 @@ function setWeather(city,state){
 			if (precip > 50) {
 				setrain();
 			}
-			$("#precip").prepend(precip);
+			$("#precip").html(precip + "%");
 
 			uvi = getUV(hourly);
 			console.log(uvi);
 			if (uvi > 5) {
 				setSunglasses();
 			}
-			$("#uvi").prepend(uvi);
+			$("#uvi").html(uvi);
 
 			feels_t = hourly[0]['feelslike']['english'];
 			console.log("feels like temp is "+feels_t)
-			$("#feels_t").prepend(feels_t);
+			$("#feels_t").html(feels_t + " &deg;F");
 			listsuggestions(feels_t);
 			localStorage.setItem("feels_t", feels_t);
 		},
 		error: function() {
-			$("#error").append("Problem with finding hourly.");
+			$("#error").html("Problem with finding hourly.");
 			$("#error").prop("hidden", false);
 		}
 	});
@@ -370,12 +382,12 @@ function setWeather(city,state){
 		dataType: "jsonp",
 		success: function(parsed_json){			
 			hightemp = parsed_json['forecast']['simpleforecast']['forecastday'][0]['high']['fahrenheit'];
-			$("#high").prepend(hightemp);
+			$("#high").html(hightemp);
 			lowtemp = parsed_json['forecast']['simpleforecast']['forecastday'][0]['low']['fahrenheit'];
-			$("#low").prepend(lowtemp);
+			$("#low").html(lowtemp);
 		},
 		error: function() {
-			$("#error").append("Problem with finding forecast.");
+			$("#error").html("Problem with finding forecast.");
 			$("#error").prop("hidden", false);
 		}
 	});
@@ -409,16 +421,16 @@ function getForecastHourly(timeOfDay) {
 					var wind_mph = hourly[i].wspd.english;
 					var humidity = hourly[i].humidity;
 					var precip = hourly[i].pop;
-					$("#temp").append(temp_f);
-					$("#wind").append(wind_mph);
-					$("#humid").append(humidity);
-					$("#precip").append(precip);
+					$("#temp").html(temp_f);
+					$("#wind").html(wind_mph);
+					$("#humid").html(humidity);
+					$("#precip").html(precip);
 					break;
 				}
 			}
 		},
 		error: function() {
-			$("#error").append("Problem with finding forecast.");
+			$("#error").html("Problem with finding forecast.");
 			$("#error").prop("hidden", false);
 		}
 	});
@@ -455,12 +467,12 @@ function setrain() {
 }
 
 function toggleDetails() {
-	var val = $("#weatherdetails").text();
+	var val = $("#weatherdetails").html();
 	if(val.indexOf("More") > -1) {
-		$("#weatherdetails h4").text("Less Weather Details");
+		$("#weatherdetails h4").html("Less Weather Details");
 	}
 	else {
-		$("#weatherdetails h4").text("More Weather Details");
+		$("#weatherdetails h4").html("More Weather Details");
 	}
 
 }
@@ -472,7 +484,7 @@ function setSunglasses() {
 function changeLocation()
 {
 	$("#loc").val($("#new_city").val() + "," + $("#new_state").val());
-	getLocation1($("#new_city").val(), $("#new_state").val());
+	return getLocation1($("#new_city").val(), $("#new_state").val());
 }
 
 function createlightboxlogin() {
