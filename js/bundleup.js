@@ -510,19 +510,9 @@ function checkSun(city, state) {
 		dataType:"jsonp",
 		success: function(parsed_json) {
 			var chour = parseInt(parsed_json["moon_phase"]["current_time"]["hour"]);
-			var cmin = parseInt(parsed_json["moon_phase"]["current_time"]["minute"]);
-			var sunrise_hour = parseInt(parsed_json["moon_phase"]["sunrise"]["hour"]);
-			var sunrise_minute = parseInt(parsed_json["moon_phase"]["sunrise"]["minute"]);
 			var sunset_hour = parseInt(parsed_json["moon_phase"]["sunset"]["hour"]);
-			var sunset_minute = parseInt(parsed_json["moon_phase"]["sunset"]["minute"]);
 
-			if ((chour==sunrise_hour) && (cmin>sunrise_minute)) {
-				setSunglasses();
-			}
-			else if ((chour==sunset_hour) && (cmin<sunset_minute)) {
-				setSunglasses();
-			}
-			else if ((chour>sunrise_hour) && (chour<sunset_hour)) {
+			if (chour<sunset_hour) {
 				setSunglasses();
 			}
 		},
