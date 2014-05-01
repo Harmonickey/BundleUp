@@ -5,6 +5,8 @@ var lowtemp = 45;
 var hightemp = 75;
 var pref = "default";
 
+var feels_t = 0;
+
 //ranges: <20, 20-50, >50
 function setCold() {
 	$("#right").removeClass("selected");
@@ -388,7 +390,7 @@ function setWeather(city,state){
 			console.log("feels like temp is "+feels_t)
 			$("#feels_t").html(feels_t + " &deg;F");
 			listsuggestions(feels_t);
-			localStorage.setItem("feels_t", feels_t);
+			//localStorage.setItem("feels_t", feels_t);
 		},
 		error: function() {
 			$("#error").html("Problem with finding hourly.");
@@ -474,7 +476,7 @@ function listsuggestions(temp) {
 }
 
 function changesuggestions() {
-	var feels_t = localStorage.getItem("feels_t");
+	//var feels_t = localStorage.getItem("feels_t");
 	document.getElementById("cold").style.display='none';
 	document.getElementById("mild").style.display='none';
 	document.getElementById("warm").style.display='none';
@@ -539,10 +541,10 @@ function closelightbox() {
 	document.getElementById('lightlogin').style.display='none';
 }
 
+//press 'Enter' to submit location search
 $(document).keypress(function(event) {
 	if (event.keyCode == 13) {
 		event.preventDefault();
 		changeLocation();
-
 	}
 })
