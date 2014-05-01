@@ -91,7 +91,7 @@ function getLocation(form) {
 	localStorage.setItem("hightemp", hightemp);
 	localStorage.setItem("pref", pref);
 
-	var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "," + state;
+	var url = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "," + state;
  	console.log(url);
  	$.ajax( {
  		type: 'POST',
@@ -186,7 +186,7 @@ function getWeather(position, city, state) {
 	var state = state;
 	console.log(position)
 	if (position != null) {
-		var geoAPI = "http://api.wunderground.com/api/871d6fab2c5007d4/geolookup/q/"+ position.coords.latitude +","+ position.coords.longitude+".json";
+		var geoAPI = "https://api.wunderground.com/api/871d6fab2c5007d4/geolookup/q/"+ position.coords.latitude +","+ position.coords.longitude+".json";
 		$.ajax ({
 		  dataType : "jsonp",
 		  url : geoAPI,
@@ -216,7 +216,7 @@ function setWeather(city,state){
 			document.getElementById("sunny").style.display='none';
 
 	$("#loc").html(city + ', ' + state);
-	var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "," + state;
+	var url = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "," + state;
 	console.log(url);
 	$.ajax( {
 		type : "POST",
@@ -260,7 +260,7 @@ function setWeather(city,state){
 			*/
 
 			icon = data['weather'][0]['icon'];
-			iconurl = "http://openweathermap.org/img/w/" + icon + ".png";
+			iconurl = "https://openweathermap.org/img/w/" + icon + ".png";
 			$("#weathericon").attr("src", iconurl);
 			desc = data['weather'][0]['main'];
 			$("#desc").html(desc);
@@ -368,7 +368,7 @@ function setWeather(city,state){
 
 	$.ajax( {
 		//5bb4e5428ca66275
-		url : "http://api.wunderground.com/api/871d6fab2c5007d4/hourly/q/" + state + "/"+city+".json",
+		url : "https://api.wunderground.com/api/871d6fab2c5007d4/hourly/q/" + state + "/"+city+".json",
 		dataType: "jsonp",
 		success: function(parsed_json) {
 			var hourly = parsed_json['hourly_forecast'];
@@ -397,7 +397,7 @@ function setWeather(city,state){
 	});
 
 	$.ajax({
-		url: "http://api.wunderground.com/api/871d6fab2c5007d4/forecast/q/" + state + "/"+city+".json",
+		url: "https://api.wunderground.com/api/871d6fab2c5007d4/forecast/q/" + state + "/"+city+".json",
 		dataType: "jsonp",
 		success: function(parsed_json){			
 			hightemp = parsed_json['forecast']['simpleforecast']['forecastday'][0]['high']['fahrenheit'];
@@ -429,7 +429,7 @@ function getForecastHourly(timeOfDay) {
 	}	
 	
 	$.ajax({
-		url:"http://api.wunderground.com/api/5bb4e5428ca66275/hourly/q/"
+		url:"https://api.wunderground.com/api/5bb4e5428ca66275/hourly/q/"
 		+state+"/"+city+".json",
 		dataType:"jsonp",
 		success: function(parsed_json) {
@@ -505,7 +505,7 @@ function checkSun(city, state) {
 	//var cmin = d.getMinutes();
 	
 	$.ajax({
-		url:"http://api.wunderground.com/api/5bb4e5428ca66275/astronomy/q/"
+		url:"https://api.wunderground.com/api/5bb4e5428ca66275/astronomy/q/"
 		+state+"/"+city+".json",
 		dataType:"jsonp",
 		success: function(parsed_json) {
