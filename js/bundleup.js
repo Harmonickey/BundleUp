@@ -401,9 +401,9 @@ function setWeather(city,state){
 		dataType: "jsonp",
 		success: function(parsed_json){			
 			hightemp = parsed_json['forecast']['simpleforecast']['forecastday'][0]['high']['fahrenheit'];
-			$("#high").html(hightemp);
+			$("#high").html(hightemp + " &deg;F");
 			lowtemp = parsed_json['forecast']['simpleforecast']['forecastday'][0]['low']['fahrenheit'];
-			$("#low").html(lowtemp);
+			$("#low").html(lowtemp + " &deg;F");
 		},
 		error: function() {
 			$("#error").html("Problem with finding forecast.");
