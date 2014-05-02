@@ -250,16 +250,6 @@ function setWeather(city,state){
 
 			humidity = data['main']['humidity'];
 			$("#humid").html(humidity + "%");
-			/*
-			high = data['main']['temp_max'];
-			fhigh = (9/5)*(high - 273) + 32;
-			fhigh = fhigh.toFixed(0);
-			$("#high").html(fhigh);
-			low = data['main']['temp_min'];
-			flow = (9/5)*(low - 273) + 32;
-			flow = flow.toFixed(0);
-			$("#low").html(flow);
-			*/
 
 			icon = data['weather'][0]['icon'];
 			iconurl = "https://openweathermap.org/img/w/" + icon + ".png";
@@ -390,6 +380,7 @@ function setWeather(city,state){
 			console.log("feels like temp is "+feels_t)
 			$("#feels_t").html(feels_t + " &deg;F");
 			listsuggestions(feels_t);
+			toggleOptions(feels_t);
 			//localStorage.setItem("feels_t", feels_t);
 		},
 		error: function() {
@@ -460,8 +451,6 @@ function getForecastHourly(timeOfDay) {
 function findcondition(temp) {
 	lowtemp = localStorage.getItem("lowtemp");
 	hightemp = localStorage.getItem("hightemp");
-	console.log(lowtemp);
-	console.log(hightemp);
 	if (temp < lowtemp) {
 		return 'cold';}
 	if (temp < hightemp) {
@@ -470,9 +459,60 @@ function findcondition(temp) {
 }
 
 function listsuggestions(temp) {
-	console.log(temp);
 	var condition = findcondition(temp);
 	document.getElementById(condition).style.display='block';
+}
+
+/* 
+====> If 2+ temp preferences overlap (i.e. changing between "Less" and
+	"Average" doesn't change anything), remove options so there isn't 
+	confusion
+*/
+function toggleOptions(feelslike) {
+	if (feelslike < 20) {
+		var condition1 = 'cold';
+	}
+	else if (feelslike < 50) {
+		var condition1 = 'mild';
+	}
+	else {
+		var condition1 = 'warm';
+	}
+	if (feelslike < 35) {
+		var condition2 = 'cold';
+	}
+	else if (feelslike < 65) {
+		var condition2 = 'mild';
+	}
+	else {
+		var condition2 = 'warm';
+	}
+	if (feelslike < 45) {
+		var condition3 = 'cold';
+	}
+	else if (feelslike < 75) {
+		var condition3 = 'mild';
+	}
+	else {
+		var condition3 = 'warm';
+	}
+	if ((condition1==condition2) && (condition2==condition3)) {
+		document.getElementById("cond_prefs").style.display='none';
+	}
+	else if (condition1==condition2) {
+		if($("#left").hasClass("selected")) {
+			$("#left").removeClass("selected");
+			$("#center").addClass("selected");
+		}
+		document.getElementById("left").style.display='none';
+	}
+	else if (condition2==condition3) {
+		if($("#right").hasClass("selected")) {
+			$("#right").removeClass("selected");
+			$("#center").addClass("selected");
+		}
+		document.getElementById("right").style.display='none';
+	}
 }
 
 function changesuggestions() {
@@ -480,6 +520,7 @@ function changesuggestions() {
 	document.getElementById("cold").style.display='none';
 	document.getElementById("mild").style.display='none';
 	document.getElementById("warm").style.display='none';
+
 	listsuggestions(feels_t);
 }
 

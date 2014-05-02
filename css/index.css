@@ -42,6 +42,7 @@ a:link, a:visited{
 	/*border-right: thin solid #B8B8B8;*/
 	font-size: large;
 	color: #666666;
+	border-bottom: thin solid orange;
 }
 
 
@@ -299,7 +300,6 @@ input[type=button] {
 /*Needed to prevent white background on click*/
 .menu-option2 {
 	width: 100%;
-	border-top: thin solid orange;
 	border-bottom: thin solid orange;
 	padding: 20px;
 	color: white;
