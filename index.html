@@ -18,7 +18,7 @@
       <link rel="stylesheet" type="text/css" href="css/index.css">
 
       <!-- JS/JQuery-->
-      <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+      <script type="text/javascript" src="js/jquery.min.js"></script>
       <script type="text/javascript" src="js/bootstrap.js"></script>
       <script type="text/javascript" src="js/bundleup.js"></script>
   </head>
@@ -133,11 +133,11 @@
 
    
 
-    <div class="menu-option2">
+    <div class="menu-option2" id="cond_prefs">
       <div class="menu-prefs" style="margin-top: -10px;">
         <span>i prefer to wear...</span><br>
           <button class="left2" id="left" onclick="setCold(); storePrefs(); changesuggestions(); return false">less</button>
-          <button class="center2" id="center" onclick="setDef(); storePrefs(); changesuggestions(); return false">normal</button>
+          <button class="center2" id="center" onclick="setDef(); storePrefs(); changesuggestions(); return false">average</button>
           <button class="right2" id="right" onclick="setWarm(); storePrefs(); changesuggestions(); return false">more</button>
       </div>
     </div>
