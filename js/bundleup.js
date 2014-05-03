@@ -147,12 +147,22 @@ function getLocation1(city1, state1) {
 					ret_val = false;
  			}
  			else {
+				if (data['location']['city'] == city) {
  					err = 0;
  					console.log("Success location");
  					setErrors(err);
 
  					document.location = "index.html";
 					ret_val = true;
+				} else {
+					err = 1;
+ 					console.log("Failed location");
+ 					setErrors(err)
+ 					loadErrors()
+ 					localStorage.setItem("city", null);
+ 					localStorage.setItem("state", null);
+					ret_val = false;
+				}
  			}
  		},
  		error: function(err) {
