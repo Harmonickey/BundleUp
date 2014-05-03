@@ -93,7 +93,7 @@ function getLocation(form) {
 	localStorage.setItem("hightemp", hightemp);
 	localStorage.setItem("pref", pref);
 
-	var url = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "," + state;
+	var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "," + state;
  	console.log(url);
  	$.ajax( {
  		type: 'POST',
@@ -218,7 +218,7 @@ function setWeather(city,state){
 			document.getElementById("sunny").style.display='none';
 
 	$("#loc").html(city + ', ' + state);
-	var url = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "," + state;
+	var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "," + state;
 	console.log(url);
 	$.ajax( {
 		type : "POST",
@@ -252,7 +252,7 @@ function setWeather(city,state){
 			$("#humid").html(humidity + "%");
 
 			icon = data['weather'][0]['icon'];
-			iconurl = "https://openweathermap.org/img/w/" + icon + ".png";
+			iconurl = "http://openweathermap.org/img/w/" + icon + ".png";
 			$("#weathericon").attr("src", iconurl);
 			desc = data['weather'][0]['main'];
 			$("#desc").html(desc);
