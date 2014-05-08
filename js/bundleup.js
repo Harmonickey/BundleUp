@@ -5,6 +5,8 @@ var lowtemp = 45;
 var hightemp = 75;
 var pref = "default";
 
+var feels_t = 0;
+
 //ranges: <20, 20-50, >50
 function setCold() {
 	$("#right").removeClass("selected");
@@ -135,7 +137,7 @@ function getLocation1(city1, state1) {
  		dataType: 'jsonp',
  		async: false,
  		success: function(data) {
- 			if(data['response']['results']) {
+ 			if(data['response']['results'] || data['response']['error']) {
  					err = 1;
  					console.log("Failed location");
  					setErrors(err)
@@ -145,12 +147,22 @@ function getLocation1(city1, state1) {
 					ret_val = false;
  			}
  			else {
+				if (data['location']['city'] == city) {
  					err = 0;
  					console.log("Success location");
  					setErrors(err);
 
  					document.location = "index.html";
 					ret_val = true;
+				} else {
+					err = 1;
+ 					console.log("Failed location");
+ 					setErrors(err)
+ 					loadErrors()
+ 					localStorage.setItem("city", null);
+ 					localStorage.setItem("state", null);
+					ret_val = false;
+				}
  			}
  		},
  		error: function(err) {
@@ -182,12 +194,11 @@ function getSavedLocation() {
 }
 
 function getWeather(position, city, state) {
-	
 	var city = city;
 	var state = state;
 	console.log(position)
 	if (position != null) {
-		var geoAPI = "http://api.wunderground.com/api/871d6fab2c5007d4/geolookup/q/"+ position.coords.latitude +","+ position.coords.longitude+".json";
+		var geoAPI = "https://api.wunderground.com/api/871d6fab2c5007d4/geolookup/q/"+ position.coords.latitude +","+ position.coords.longitude+".json";
 		$.ajax ({
 		  dataType : "jsonp",
 		  url : geoAPI,
@@ -210,6 +221,11 @@ function setWeather(city,state){
 	var city = localStorage.getItem("city");
 	var state = localStorage.getItem("state");
 	*/
+			document.getElementById("cold").style.display='none';
+			document.getElementById("mild").style.display='none';
+			document.getElementById("warm").style.display='none';
+			document.getElementById("rain").style.display='none';
+			document.getElementById("sunny").style.display='none';
 
 	$("#loc").html(city + ', ' + state);
 	var url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "," + state;
@@ -229,6 +245,8 @@ function setWeather(city,state){
 				err = 0;
 				console.log("Success location");
 				setErrors(err);
+				localStorage.setItem("city",city)
+				localStorage.setItem("state",state)
 			}
 			temp = data['main']['temp'];
 			ftemp = (9/5)*(temp - 273) + 32;
@@ -242,16 +260,6 @@ function setWeather(city,state){
 
 			humidity = data['main']['humidity'];
 			$("#humid").html(humidity + "%");
-			/*
-			high = data['main']['temp_max'];
-			fhigh = (9/5)*(high - 273) + 32;
-			fhigh = fhigh.toFixed(0);
-			$("#high").html(fhigh);
-			low = data['main']['temp_min'];
-			flow = (9/5)*(low - 273) + 32;
-			flow = flow.toFixed(0);
-			$("#low").html(flow);
-			*/
 
 			icon = data['weather'][0]['icon'];
 			iconurl = "http://openweathermap.org/img/w/" + icon + ".png";
@@ -362,7 +370,7 @@ function setWeather(city,state){
 
 	$.ajax( {
 		//5bb4e5428ca66275
-		url : "http://api.wunderground.com/api/871d6fab2c5007d4/hourly/q/" + state + "/"+city+".json",
+		url : "https://api.wunderground.com/api/871d6fab2c5007d4/hourly/q/" + state + "/"+city+".json",
 		dataType: "jsonp",
 		success: function(parsed_json) {
 			var hourly = parsed_json['hourly_forecast'];
@@ -371,11 +379,10 @@ function setWeather(city,state){
 				setrain();
 			}
 			$("#precip").html(precip + "%");
-
 			uvi = getUV(hourly);
 			console.log(uvi);
 			if (uvi > 5) {
-				setSunglasses();
+				checkSun(city, state);
 			}
 			$("#uvi").html(uvi);
 
@@ -383,7 +390,8 @@ function setWeather(city,state){
 			console.log("feels like temp is "+feels_t)
 			$("#feels_t").html(feels_t + " &deg;F");
 			listsuggestions(feels_t);
-			localStorage.setItem("feels_t", feels_t);
+			toggleOptions(feels_t);
+			//localStorage.setItem("feels_t", feels_t);
 		},
 		error: function() {
 			$("#error").html("Problem with finding hourly.");
@@ -392,13 +400,13 @@ function setWeather(city,state){
 	});
 
 	$.ajax({
-		url: "http://api.wunderground.com/api/871d6fab2c5007d4/forecast/q/" + state + "/"+city+".json",
+		url: "https://api.wunderground.com/api/871d6fab2c5007d4/forecast/q/" + state + "/"+city+".json",
 		dataType: "jsonp",
 		success: function(parsed_json){			
 			hightemp = parsed_json['forecast']['simpleforecast']['forecastday'][0]['high']['fahrenheit'];
-			$("#high").html(hightemp);
+			$("#high").html(hightemp + " &deg;F");
 			lowtemp = parsed_json['forecast']['simpleforecast']['forecastday'][0]['low']['fahrenheit'];
-			$("#low").html(lowtemp);
+			$("#low").html(lowtemp + " &deg;F");
 		},
 		error: function() {
 			$("#error").html("Problem with finding forecast.");
@@ -424,7 +432,7 @@ function getForecastHourly(timeOfDay) {
 	}	
 	
 	$.ajax({
-		url:"http://api.wunderground.com/api/5bb4e5428ca66275/hourly/q/"
+		url:"https://api.wunderground.com/api/5bb4e5428ca66275/hourly/q/"
 		+state+"/"+city+".json",
 		dataType:"jsonp",
 		success: function(parsed_json) {
@@ -453,8 +461,6 @@ function getForecastHourly(timeOfDay) {
 function findcondition(temp) {
 	lowtemp = localStorage.getItem("lowtemp");
 	hightemp = localStorage.getItem("hightemp");
-	console.log(lowtemp);
-	console.log(hightemp);
 	if (temp < lowtemp) {
 		return 'cold';}
 	if (temp < hightemp) {
@@ -463,16 +469,68 @@ function findcondition(temp) {
 }
 
 function listsuggestions(temp) {
-	console.log(temp);
 	var condition = findcondition(temp);
 	document.getElementById(condition).style.display='block';
 }
 
+/* 
+====> If 2+ temp preferences overlap (i.e. changing between "Less" and
+	"Average" doesn't change anything), remove options so there isn't 
+	confusion
+*/
+function toggleOptions(feelslike) {
+	if (feelslike < 20) {
+		var condition1 = 'cold';
+	}
+	else if (feelslike < 50) {
+		var condition1 = 'mild';
+	}
+	else {
+		var condition1 = 'warm';
+	}
+	if (feelslike < 35) {
+		var condition2 = 'cold';
+	}
+	else if (feelslike < 65) {
+		var condition2 = 'mild';
+	}
+	else {
+		var condition2 = 'warm';
+	}
+	if (feelslike < 45) {
+		var condition3 = 'cold';
+	}
+	else if (feelslike < 75) {
+		var condition3 = 'mild';
+	}
+	else {
+		var condition3 = 'warm';
+	}
+	if ((condition1==condition2) && (condition2==condition3)) {
+		document.getElementById("cond_prefs").style.display='none';
+	}
+	else if (condition1==condition2) {
+		if($("#left").hasClass("selected")) {
+			$("#left").removeClass("selected");
+			$("#center").addClass("selected");
+		}
+		document.getElementById("left").style.display='none';
+	}
+	else if (condition2==condition3) {
+		if($("#right").hasClass("selected")) {
+			$("#right").removeClass("selected");
+			$("#center").addClass("selected");
+		}
+		document.getElementById("right").style.display='none';
+	}
+}
+
 function changesuggestions() {
-	var feels_t = localStorage.getItem("feels_t");
+	//var feels_t = localStorage.getItem("feels_t");
 	document.getElementById("cold").style.display='none';
 	document.getElementById("mild").style.display='none';
 	document.getElementById("warm").style.display='none';
+
 	listsuggestions(feels_t);
 }
 
@@ -494,6 +552,30 @@ function setSunglasses() {
 	document.getElementById('sunny').style.display='block';
 }
 
+function checkSun(city, state) {
+	//var d = new Date();
+	//var chour = d.getHours();
+	//var cmin = d.getMinutes();
+	
+	$.ajax({
+		url:"https://api.wunderground.com/api/5bb4e5428ca66275/astronomy/q/"
+		+state+"/"+city+".json",
+		dataType:"jsonp",
+		success: function(parsed_json) {
+			var chour = parseInt(parsed_json["moon_phase"]["current_time"]["hour"]);
+			var sunset_hour = parseInt(parsed_json["moon_phase"]["sunset"]["hour"]);
+
+			if (chour<sunset_hour) {
+				setSunglasses();
+			}
+		},
+		error: function() {
+			$("#error").html("Problem with finding sunrise/sunset.");
+			$("#error").prop("hidden", false);
+		}
+	});
+}
+
 function changeLocation()
 {
 	$("#loc").val($("#new_city").val() + "," + $("#new_state").val());
@@ -510,12 +592,10 @@ function closelightbox() {
 	document.getElementById('lightlogin').style.display='none';
 }
 
+//press 'Enter' to submit location search
 $(document).keypress(function(event) {
 	if (event.keyCode == 13) {
 		event.preventDefault();
-		closelightbox();
 		changeLocation();
-
 	}
 })
-
